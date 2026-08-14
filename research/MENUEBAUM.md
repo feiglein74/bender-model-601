@@ -539,9 +539,132 @@ Medizinprüfgerät unverzichtbar.
 
 ---
 
-## [S18] Klassifikation → Klasse I
+## [S18] Klassifikation → Klasse I → fest angeschlossen?
 
-**Erreicht:** Softkey Zeile 2 von `[S15]` · **noch nicht betreten**
+**Erreicht:** Softkey Zeile 2 von `[S15]` · **aufgenommen 2026-08-14**
+
+```
+  1  Klassifikation
+  2  fest angeschlossenes
+  3> Gerät ?   ja           → [S21]
+  4> Nein                   → [S22]
+  LED: noch nicht notiert
+```
+
+### Layout: Die Frage läuft in eine Optionszeile hinein
+
+Neue Beobachtung, die das bisherige Bild verfeinert: Die Frage
+**„fest angeschlossenes Gerät ?"** erstreckt sich über die Zeilen 2 und 3 —
+und **Zeile 3 trägt zugleich die Antwort `ja` und ein `>`.**
+
+Damit ist zu präzisieren:
+
+> **Zeile 1** trägt nie ein `>`. **Fortsetzungstext** einer Überschrift oder
+> Frage kann sich dagegen eine Zeile mit einer Option **teilen**; die
+> auswählbare Angabe steht dann **rechts** in der Zeile.
+
+Beim Abschreiben deshalb immer die **ganze Zeile** aufnehmen, nicht nur das
+Wort, das nach Option aussieht.
+
+Auch das `?` fügt sich in die bekannte Konvention: ein noch nicht gesetzter
+Wert. Hier zugleich als Frage gelesen.
+
+**Schreibweise wörtlich:** `ja` klein, `Nein` groß. Uneinheitlich — als
+Eigenart des Softwarestands `IVM429 D` festgehalten, passend zum englischen
+`SET:` in `[S10]`.
+
+### Warum diese Frage an dieser Stelle steht
+
+Ein **fest angeschlossenes Gerät** ist ortsfest installiert und hat keinen
+Netzstecker — es lässt sich also **nicht in die Prüfsteckdose stecken.**
+
+Das ändert den ganzen Messaufbau:
+
+| | Gerät mit Stecker | Fest angeschlossenes Gerät |
+|---|---|---|
+| Netzversorgung | über die **Prüfsteckdose** des µP601 | bleibt an der Hausinstallation |
+| Fehlerbedingungen (Netzleiter offen, Phase vertauscht) | vom Gerät **schaltbar** | **nicht herstellbar** |
+| Schutzleitermessung | über den Stecker | über **Prüfspitze** am Schutzleiteranschluss |
+| Ableitstrommessung | direkt | nur als **Ersatzableitstrom** oder über Differenzstrom |
+
+Die Frage entscheidet also, **welche Prüfschritte überhaupt möglich sind.**
+Dass das Gerät sie so früh stellt — direkt nach der Schutzklasse und noch vor
+allem anderen — ist folgerichtig.
+
+Zu erwarten ist, dass der Zweig `ja` einen **deutlich kürzeren Prüfumfang**
+ergibt als `Nein`.
+
+---
+
+## [S21] Klasse I → fest angeschlossen: ja → Anwendungsteil-Typ
+
+**Erreicht:** Softkey Zeile 3 von `[S18]` · **aufgenommen 2026-08-14**
+
+```
+  1  Klassifikation:
+  2> Typ B                  → [S23]
+  3> Typ BF                 → [S24]
+  4> Typ CF                 → [S25]
+  LED: noch nicht notiert
+```
+
+### Der Anwendungsteil-Typ — die Grenzwertklasse
+
+Damit ist die Klassifikationskette komplett:
+
+```
+Schutzklasse  →  fest angeschlossen?  →  Anwendungsteil-Typ
+```
+
+| Typ | Bedeutung |
+|---|---|
+| **B** | *Body* — Anwendungsteil mit Grundschutz, **erdbezogen**. Nicht für direkte Anwendung am Herzen. |
+| **BF** | *Body Floating* — Anwendungsteil **galvanisch getrennt** vom übrigen Gerät. |
+| **CF** | *Cardiac Floating* — getrennt und für die **direkte Anwendung am Herzen** zugelassen. Strengste Grenzwerte. |
+
+Der Typ bestimmt die zulässigen **Patientenableitströme**, und die Unterschiede
+sind erheblich — bei `CF` liegen sie um eine Größenordnung unter denen von
+`B` und `BF`.
+
+**Welche Werte dieses Gerät ansetzt, steht nicht in einem Lehrbuch, sondern im
+Gerät selbst:** in `Grenzwerteingabe` (`[S16]`). Das ist der maßgebliche
+Beleg — und ein Grund mehr, jene Tabelle vollständig abzuschreiben, bevor dort
+irgendetwas verändert wird.
+
+### Offen: Gibt es „ohne Anwendungsteil"?
+
+Angezeigt werden genau drei Optionen, die die Zeilen 2 bis 4 füllen. Ein
+Prüfling **ohne** Anwendungsteil — ein Medizingerät ohne Patientenkontakt —
+hat hier keinen sichtbaren Platz.
+
+- [ ] **Leuchten `↑` oder `↓`?** Wenn ja, ist die Liste länger als der
+      Bildschirm und es rückt eine vierte Möglichkeit nach. Wenn beide dunkel
+      sind, kennt das Gerät an dieser Stelle **nur** diese drei — und dann ist
+      die Frage, wie es Geräte ohne Anwendungsteil behandelt.
+- [ ] Falls es keine vierte gibt: Wird der Anwendungsteil-Prüfschritt später
+      übersprungen, wenn nichts an den zehn Buchsen hängt?
+
+---
+
+## [S23] Typ B · [S24] Typ BF · [S25] Typ CF
+
+**Erreicht:** Softkeys von `[S21]` · **noch nicht betreten**
+
+Hier endet voraussichtlich die Klassifikation und der eigentliche
+**Prüfablauf** beginnt — der Punkt, an dem die sechs Piktogramme der
+Frontplatte auftauchen sollten.
+
+⚠️ **Ab hier wird es ernst.** Am Ende eines Prüfablaufs legt das Gerät
+Netzspannung auf die Prüfsteckdose. Solange nichts angeschlossen ist, ist das
+Durchklicken ungefährlich — aber ab hier lohnt es, vor jedem Schritt auf die
+Anzeige zu sehen, statt durchzutippen.
+
+## [S22] Klasse I → fest angeschlossen: Nein
+
+**Erreicht:** Softkey Zeile 4 von `[S18]` · **noch nicht betreten**
+
+Der Regelfall — Prüfling mit Netzstecker. Hier ist der vollständige
+Prüfumfang zu erwarten.
 
 ## [S19] Klassifikation → Klasse II
 
@@ -574,7 +697,120 @@ Messgrößen unmittelbar wählbar sein.
 
 ## [S05] Betriebsart „DIN VDE 0751T1/90"
 
-**Erreicht:** Softkey Zeile 4 von `[S02]` · **noch nicht betreten**
+**Erreicht:** Softkey Zeile 4 von `[S02]` · **teilweise aufgenommen 2026-08-14**
+
+Der Aufbau entspricht dem IEC-Zweig `[S04]`: Klassifikation,
+Grenzwerteingabe, Nur Messgerät. Der Weg zur ersten Messung führte über
+**`Nur Messgerät`** → `[S26]`.
+
+---
+
+## [S26] VDE → Nur Messgerät
+
+**Erreicht:** `Nur Messgerät` von `[S05]` · **aufgenommen 2026-08-14**
+
+```
+  1  >>> Nur Messung <<<
+  2> Schutzleiter           → [S27]
+  3> Isolation              → …
+  4> Ableitstrom            → …
+  LED: noch nicht notiert
+```
+
+**Die drei Grundmessungen des Geräts, auf einem Bildschirm.** Damit ist die
+oberste Gliederung des Messteils bekannt:
+
+| Zweig | Deckt ab |
+|---|---|
+| **Schutzleiter** | Durchgang und Widerstand des Schutzleiters |
+| **Isolation** | Isolationswiderstand, Piktogramm mit `MΩ` |
+| **Ableitstrom** | die Strommessungen, Piktogramm mit `µA` |
+
+Die Kopfzeile ist hier nicht beschreibend, sondern eine **Betriebsartwarnung**:
+`>>> Nur Messung <<<`, in Pfeile gesetzt. Das Gerät weist darauf hin, dass
+hier **ohne Bewertung und ohne Prüflingsbezug** gemessen wird.
+
+**Schreibweise:** Die Zeile erscheint mal als `>>> Nur Messung <<<`, mal als
+`>>> NUR MESSUNG <<<` (siehe `[S27]`). Weitere Uneinheitlichkeit im
+Softwarestand `IVM429 D`, wie `ja`/`Nein` und `SET:`.
+
+---
+
+## [S27] Nur Messung → Schutzleiter → Netzleitung
+
+**Erreicht:** Softkey Zeile 2 von `[S26]` · **aufgenommen 2026-08-14**
+
+```
+  1  >>> NUR MESSUNG <<<
+  2  Netzleitung
+  3> fest                   → …
+  4> abnehmbar              → [S28]
+  LED: noch nicht notiert
+```
+
+Dieselbe Unterscheidung wie in der Klassifikation des IEC-Zweigs (`[S18]`),
+hier auf die Leitung bezogen: **fest angeschlossen** oder **abnehmbar**. Sie
+entscheidet, ob überhaupt eine Kupplung zu prüfen ist.
+
+---
+
+## [S28] Nur Messung → Schutzleiter → abnehmbar
+
+**Erreicht:** Softkey Zeile 4 von `[S27]` · **aufgenommen 2026-08-14**
+
+```
+  1  >>> Nur Messung <<<
+  2  Schutzleiter
+  3> Zuleitung              → [S29]
+  4> Gehäuse                → …
+  LED: noch nicht notiert
+```
+
+Zwei verschiedene Schutzleitermessungen:
+
+- **`Zuleitung`** — die abnehmbare Leitung für sich allein, von Stecker zu
+  Kupplung. **Das ist Piktogramm 3** (Hand mit zwei Kabelenden).
+- **`Gehäuse`** — vom Netzstecker zum berührbaren Metall des Prüflings,
+  angetastet mit der Prüfspitze. Vermutlich Piktogramm 2.
+
+---
+
+## [S29] Messung: Schutzleiter der Zuleitung
+
+**Erreicht:** Softkey Zeile 3 von `[S28]` · **durchgeführt 2026-08-14**
+
+Die Messung läuft und zeigt den Widerstand in Ohm.
+Erster Messwert: **0,109 Ω**, Prüfstrom **16 A AC** (mit der Stromzange
+gemessen, das Gerät selbst nennt ihn nicht — `FUNKTIONSAUFNAHME.md`,
+Abschnitt F).
+
+### 🔑 Die Piktogramme der Frontplatte sind beleuchtet
+
+**Beim Start der Messung leuchtet das dritte Piktogramm auf** — das mit der
+Hand und den beiden Kabelenden.
+
+Das ist ein Befund von grundsätzlicher Bedeutung: **Die sechs Schaltbilder auf
+der Frontplatte sind keine gedruckten Beschriftungen, sondern hinterleuchtete
+Anzeigen.** Sie zeigen im Betrieb, **welcher Messaufbau gerade aktiv ist.**
+
+Damit ist die Frontplatte ein **Schaltbild-Display**: Der Anwender sieht nicht
+nur einen Zahlenwert auf vier Zeilen, sondern die zugehörige Beschaltung als
+Bild — welche Buchsen beteiligt sind, wo der Schutzleiter aufgetrennt wird,
+wogegen gemessen wird. Für ein Gerät mit einem so kleinen Textdisplay ist das
+eine elegante Lösung.
+
+**Und es macht die Piktogramme entschlüsselbar:** Jeder Messpunkt im Menü
+lässt sich seinem Schaltbild zuordnen, indem man beobachtet, welche Fläche
+aufleuchtet. Die Frage aus der Frontplattenaufnahme — was zeigen die sechs
+Bilder? — ist damit **systematisch beantwortbar**, ohne Handbuch.
+
+- [ ] **Zuordnungstabelle anlegen:** je Menüpfad notieren, welches Piktogramm
+      leuchtet. Nach wenigen Messungen ist die Frontplatte vollständig
+      entschlüsselt.
+- [ ] Leuchtet immer **genau eines**, oder können mehrere gleichzeitig an sein?
+- [ ] Leuchten sie auch im **Prüfablauf** (nicht nur in „Nur Messung")?
+- [ ] Sind es LEDs hinter der Folie, oder Glühlampen? Bei Glühlampen wäre das
+      ein künftiges Verschleißthema.
 
 ## [S06] `F`-Menü der Betriebsartenwahl — die Verwaltungsebene
 

@@ -34,6 +34,7 @@ nicht selbst aufgenommen.
 | `frontplatte_detail.webp` | Nahaufnahme: Beschriftung, sechs Piktogramme, Buchsen, Drucker |
 | `geraet_gesamt_mit_zubehoer.webp` | Gerät geöffnet, Tastatur im Deckel, Zubehör ausgebreitet |
 | `rueckwand.webp` | Rückwand: `V.24/RS-232C` mit `BAUD 4800`, `F1`, Summer-Schalter, Lüfter, Sicherung `2A/250V`, feste Netzleitung |
+| `typenschild.webp` | Typenschild `µP 601-1`, Werk-Nr. `600521`, `IVM 429 D`, Leistungsangaben; dazu ISO-9001-Aufkleber und Prüfplakette |
 
 Aus ihnen stammt der größte Teil der Frontplattenaufnahme in
 `research/FUNKTIONSAUFNAHME.md`, Abschnitt A.

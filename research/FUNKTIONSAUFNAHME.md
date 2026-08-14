@@ -67,6 +67,87 @@ Für Drehstromprüflinge gibt es im Menü einen eigenen Eintrag.
 
 ---
 
+## Erwartung für die noch unbetretenen Messzweige
+
+`Nur Messung` gliedert sich in **Schutzleiter**, **Isolation** und
+**Ableitstrom** (`MENUEBAUM.md`, `[S26]`). Der erste ist erkundet. Was in den
+beiden anderen zu erwarten ist — als Vorhersage formuliert, damit das
+Durchgehen des Menüs sie prüfen kann.
+
+### Isolation — Widerstand bei hoher Prüfspannung
+
+Gemessen wird der **Isolationswiderstand** mit einer **Gleichspannung in der
+Größenordnung 500 V**, angezeigt in **MΩ**. Der Prüfling ist dabei **nicht in
+Betrieb.**
+
+Zu erwartende Messstrecken:
+
+| Von | Gegen | Prüft |
+|---|---|---|
+| Netzteil (L und N gebrückt) | Schutzleiter | Isolation bei Schutzklasse I |
+| Netzteil | berührbares Gehäuse | Isolation bei Schutzklasse II |
+| Netzteil | Anwendungsteil | Trennung Netz ↔ Patient |
+| Anwendungsteil | Gehäuse / Erde | Trennung des Anwendungsteils |
+
+Die Aussage ist eine andere als bei der Schutzleiterprüfung: Dort geht es um
+einen Weg, der **da sein muss**, hier um Wege, die **nicht da sein dürfen.**
+Die hohe Prüfspannung deckt Isolationsfehler auf, die bei Netzspannung noch
+nicht durchschlagen, aber im Begriff sind es zu tun — Feuchtigkeit,
+Kriechwege, gealterte Isolierstoffe.
+
+⚠️ **500 V DC zerstören Elektronik.** Überspannungsableiter, Y-Kondensatoren
+und Netzfilter sprechen an oder werden beschädigt. Deshalb ist dieser
+Prüfschritt bei modernen Geräten oft ausdrücklich **nicht** anzuwenden — und
+für eigene Versuche nur an einem Prüfling, dem nichts passieren kann.
+
+### Ableitstrom — was im Betrieb tatsächlich fließt
+
+Hier läuft es umgekehrt: **kleine Ströme, gemessen in µA**, unter
+Bedingungen, die dem Betrieb entsprechen oder ihn nachbilden. Erwartet werden:
+
+| Messgröße | Was fließt |
+|---|---|
+| **Erdableitstrom** | Strom, der über den Schutzleiter zur Erde abfließt |
+| **Gehäuse-/Berührungsstrom** | Strom von berührbarem Metall zur Erde — mit der **Prüfspitze** angetastet |
+| **Patientenableitstrom** | Strom über das Anwendungsteil zum Patienten — über die **zehn grünen Buchsen** |
+| **Patientenhilfsstrom** | Strom **zwischen** zwei Anwendungsteil-Anschlüssen |
+
+Dazu die **Verfahren**, in denen DIN VDE 0751 sich von der IEC unterscheidet:
+
+- **Direktmessung** — der Prüfling läuft an der Prüfsteckdose, der tatsächlich
+  fließende Strom wird gemessen. Realistisch, aber aufwendiger und mit
+  Netzspannung am Prüfling.
+- **Ersatzableitstrommessung** — der Prüfling bleibt **stromlos**. Zwischen den
+  gebrückten Netzkontakten und Gehäuse bzw. Anwendungsteil wird eine
+  Prüfspannung angelegt und der Strom gemessen. Sicherer und in der
+  Wiederholungsprüfung üblich.
+- **Differenzstromverfahren** — gemessen wird die Differenz zwischen Hin- und
+  Rückleiter; was fehlt, fließt anderswohin ab.
+
+Ob dieses Gerät alle drei kennt, ist offen — **es zu erfahren, ist einer der
+Gründe, den VDE-Zweig vollständig durchzugehen.**
+
+⚠️ Bei der **Direktmessung** trennt das Gerät gezielt den Schutzleiter auf, um
+die Erst-Fehler-Bedingung herzustellen. Das berührbare Gehäuse des Prüflings
+kann in diesem Moment Spannung führen — der gemessene Strom ist begrenzt, aber
+er ist da. Kein unbeaufsichtigter Aufbau, nichts anfassen, während die Messung
+läuft.
+
+### Warum beides nötig ist
+
+Isolationsmessung und Ableitstrommessung ersetzen einander nicht:
+
+- Die **Isolationsmessung** findet Schwächen, die noch keinen Strom führen —
+  sie sieht das Problem von morgen.
+- Die **Ableitstrommessung** erfasst, was heute tatsächlich fließt,
+  einschließlich der Ströme durch Entstörkondensatoren, die völlig
+  bestimmungsgemäß da sind und trotzdem begrenzt bleiben müssen.
+
+Ein Gerät kann die eine Prüfung bestehen und die andere nicht — deshalb stehen
+beide in der Norm.
+
+---
+
 ## A — Gerät im Ruhezustand, Netzstecker gezogen
 
 - [ ] **Typenschild** vollständig: Typbezeichnung, Sachnummer, Seriennummer,
@@ -225,9 +306,38 @@ Eindeutig zuzuordnen sind bisher:
 | 5 | Stecker mit Erde, `MΩ` und `µA`, darunter Steckdose mit `L  N  PE` | **Isolationswiderstand** und **Ableitstrom** |
 | 6 | Stecker mit Erde, Kasten mit `1 … 10` und `µA` | **Patientenableitstrom** über die zehn Buchsen |
 
-Die übrigen drei zeigen Varianten mit Schutzleiter, Gehäuse und Anwendungsteil
-und sind noch nicht sicher zuzuordnen. **Der Menübaum aus Abschnitt C wird sie
-auflösen** — die Bezeichnungen dort gehören gegen diese sechs Bilder gehalten.
+Die übrigen drei zeigen Varianten mit Schutzleiter, Gehäuse und Anwendungsteil.
+
+### 🔑 Die Piktogramme sind hinterleuchtet (belegt 2026-08-14)
+
+**Sie sind keine gedruckten Beschriftungen, sondern Anzeigen.** Beim Start
+einer Messung leuchtet das zugehörige Schaltbild auf — belegt an Piktogramm 3
+(Hand mit zwei Kabelenden), das bei der Schutzleiterprüfung einer abnehmbaren
+Zuleitung aufleuchtete (`MENUEBAUM.md`, `[S29]`).
+
+Damit ist die Frontplatte ein **Schaltbild-Display**: Der Anwender sieht nicht
+nur einen Zahlenwert auf vier Zeilen, sondern die zugehörige Beschaltung als
+Bild — welche Buchsen beteiligt sind, wo aufgetrennt wird, wogegen gemessen
+wird. Für ein Gerät mit so kleinem Textdisplay eine elegante Lösung, und ein
+Stück Bedienphilosophie: Das Gerät erklärt den Messaufbau, statt ihn nur zu
+benennen.
+
+**Praktische Folge: Die Piktogramme sind vollständig entschlüsselbar**, ohne
+Handbuch — man muss nur notieren, welches Bild bei welchem Menüpfad aufleuchtet.
+
+| Nr. | Bild | Zuordnung |
+|---|---|---|
+| 1 | Stecker, Erde, gestricheltes Feld mit Erde | offen |
+| 2 | Stecker mit Erde, Pfeil zur Steckdose mit `Ω` | vermutlich **Schutzleiter → Gehäuse** |
+| 3 | **Hand hält zwei Kabelenden**, Steckdose und Kupplung mit `Ω` | **belegt: Schutzleiter → Zuleitung** (abnehmbare Netzleitung) |
+| 4 | Feld mit Erde, Pfeil zur Steckdose | offen |
+| 5 | Stecker mit Erde, `MΩ` und `µA`, `L  N  PE` | vermutlich **Isolation** |
+| 6 | Stecker mit Erde, Kasten `1 … 10` mit `µA` | vermutlich **Ableitstrom, Anwendungsteil** |
+
+- [ ] Tabelle beim weiteren Messen vervollständigen
+- [ ] Leuchtet immer genau eines, oder mehrere gleichzeitig?
+- [ ] LEDs oder Glühlampen? Bei Glühlampen wäre das ein künftiges
+      Verschleißthema.
 
 ### Neu: eingebauter Drucker
 
@@ -451,11 +561,91 @@ und in einer ruhigen Umgebung schaltet man ihn ab.
 - [ ] Steht der Schalter derzeit auf `Ein` oder `Aus`?
 - [ ] Wann summt das Gerät — Tastendruck, Schrittende, Fehler?
 
-### Was Abschnitt A noch offen lässt
+### Typenschild — aufgenommen 2026-08-14
 
-- [ ] **Typenschild** vollständig — Seriennummer, Baujahr, Anschlusswerte.
-      Auf der Rückwand ist keines zu sehen; vermutlich auf der Unterseite
-- [ ] Zuordnung von **`F1`**
+Quelle: `../bilder/verkaufsanzeige/typenschild.webp`
+
+```
+BENDER ⚡  µP 601-1
+SICHERHEITSTESTER / SAFETY - TESTER
+
+Schutzklasse / Protection class:        I
+Nennspannung / Rated voltage:           U_N  = AC 48…62 Hz 230 V
+Leistungsaufnahme / Rated supply power: P_in  = 150 VA
+Ausgangsleistung / Rated output power:  P_out = 3680 VA
+Betriebsart / Operation class:          DB / continuous
+
+Artikel-Nr. / Art. no.: B928161
+Werk-Nr. / Serial-no.:  600521        IVM 429 D
+```
+
+Daneben ein zweiter Aufkleber:
+
+```
+Quality System Certified · Det Norske Veritas · ISO 9001
+BENDER
+Dipl.-Ing. W. Bender GmbH+CoKG
+Postf. 1161 · D-35301 Grünberg
+Tel. (06401) 807-0 · Fax 807259
+```
+
+Sowie eine **Prüfplakette „Nächster Prüftermin"** mit den Jahresfeldern
+`98 · 99 · 00 · 01 · 02 · 03` und Monatsfeldern `1`–`12`, gekennzeichnet im
+Bereich der frühen Jahre. Das Gerät stand also **Ende der 1990er im
+regelmäßigen Prüfumlauf** — es war Betriebsmittel, nicht Reserve.
+
+### Was das Typenschild klärt
+
+**1. `IVM 429 D` steht auf dem Typenschild** — neben der Werk-Nummer.
+
+Damit ist die Deutung entschieden: **keine Angabe des Vorbesitzers**
+(Hypothese B ist erledigt), sondern eine **werkseitige Kennung der
+Geräteausführung**, die das Gerät auch beim Einschalten anzeigt. Das
+abschließende `D` als Sprachkennung fügt sich weiterhin.
+
+**2. `P_out = 3680 VA` = 230 V × 16 A.**
+
+Die Ausgangsleistung ist exakt die Anschlussleistung eines 16-A-Stromkreises.
+Sie ist keine erzeugte Leistung, sondern die **Durchleitung zur
+Prüfsteckdose** — das Gerät darf einen Prüfling bis 16 A versorgen. Das deckt
+sich mit dem DS601-Datenblatt („maximal 16 A pro Phase") und mit dem
+gemessenen Schutzleiter-Prüfstrom von 16 A.
+
+**3. `P_in = 150 VA`** ist der Eigenverbrauch — rund 0,65 A. Damit ist auch die
+Rückwand erklärt:
+
+| Element | Wofür |
+|---|---|
+| Sicherung **2 A / 250 V** | die **Geräteelektronik**, passend zu 150 VA |
+| **`F1`**, rotes Bauteil mit Aufdruck `16` | naheliegend: **16-A-Schutzschalter für die Prüfsteckdose** — der Strompfad zum Prüfling, den die 2-A-Sicherung nicht abdecken kann |
+
+Damit ist die offene Frage zu `F1` mit hoher Wahrscheinlichkeit beantwortet.
+Es wären zwei getrennte Schutzorgane für zwei getrennte Strompfade — logisch
+und bei Prüfgeräten üblich.
+
+- [ ] Aufdruck von `F1` aus der Nähe lesen und bestätigen
+
+**4. `48…62 Hz`** — das Gerät arbeitet an 50- wie an 60-Hz-Netzen.
+
+**5. `DB / continuous`** — Dauerbetrieb, keine Einschaltdauerbegrenzung für
+das Gerät selbst. Für den **Prüfschritt** gilt das nicht: 16 A durch einen
+Prüfling sind naturgemäß kurzzeitig.
+
+### 🔑 Datierung: frühestens Juli 1993
+
+Die Herstelleranschrift trägt die **fünfstellige Postleitzahl `D-35301`**.
+Fünfstellige Postleitzahlen gelten in Deutschland **seit dem 1. Juli 1993.**
+
+**Damit ist das Gerät frühestens von Mitte 1993** — die vorherige Schätzung
+„etwa 1990–1993", abgeleitet aus den Normausgaben von 1988 und 1990, ist nach
+unten zu korrigieren. Zusammen mit der Prüfplakette (Jahresfelder ab `98`)
+ergibt sich ein Bild: **gebaut in den 1990er Jahren, in Betrieb bis mindestens
+Anfang der 2000er.**
+
+Der Firmenname **Dipl.-Ing. W. Bender GmbH + Co KG** ist die historische
+Firmierung des heutigen Bender GmbH & Co. KG.
+
+### Was Abschnitt A noch offen lässt
 - [ ] Lage des **Netzschalters** — auf der Rückwand ist keiner erkennbar,
       der einzige Wippschalter gehört zum Summer
 - [ ] Kalibrier- und Inventaraufkleber
@@ -819,9 +1009,208 @@ Prüfling wählen, dem nichts passieren kann:
       Erwartungsrahmen oben?
 - [ ] Leerlaufmessung ohne Prüfling zum Vergleich
 
-**Ergebnis:**
+**Ergebnis — erste Messung am 2026-08-14**
 
-> _(noch nicht aufgenommen)_
+### Schutzleiterprüfung einer Geräteanschlussleitung
+
+Über einen Menüpfad gefunden, der **nur die Leitung** prüft — also der
+Prüfschritt zu Piktogramm 3 auf der Frontplatte.
+
+| | |
+|---|---|
+| **Messwert** | **0,109 Ω** |
+| Prüfling | Geräteanschlussleitung (Schuko ↔ Kaltgerätekupplung) |
+| Beobachtung | **Die Leitung wird während der Messung deutlich warm.** |
+
+- [ ] Menüpfad dorthin nachtragen und in `MENUEBAUM.md` einordnen
+- [ ] Nennt das Gerät den **Prüfstrom**? Und einen **Grenzwert**?
+- [ ] Meldet es Bestanden / Nicht bestanden, oder nur den Zahlenwert?
+- [ ] Kabellänge und Querschnitt notieren — ohne sie ist der Messwert nicht
+      einzuordnen
+
+### Einordnung des Messwerts
+
+**0,109 Ω ist ein unauffälliger Wert für eine Netzleitung.** Er setzt sich
+zusammen aus dem Leiterwiderstand und den Übergangswiderständen an Stecker,
+Kupplung und den Kontakten des Prüfgeräts.
+
+Zur Größenordnung: Kupfer hat rund **0,0175 Ω·mm²/m**. Für den Schutzleiter
+einer Leitung ergibt das
+
+| Querschnitt | Widerstand je Meter |
+|---|---|
+| 0,75 mm² | ≈ 0,023 Ω/m |
+| 1,0 mm² | ≈ 0,018 Ω/m |
+| 1,5 mm² | ≈ 0,012 Ω/m |
+
+Bei einer kurzen Leitung liegt der Leiteranteil damit deutlich unter dem
+Messwert — der Rest sind Übergangswiderstände, was normal ist. Bei einer
+langen Leitung kann der Leiteranteil den Wert dagegen fast allein erklären.
+**Deshalb gehören Länge und Querschnitt zum Messwert dazu**, sonst ist er
+nicht zu beurteilen.
+
+Den maßgeblichen **Grenzwert** setzt nicht die Faustregel, sondern das Gerät
+selbst — nachzulesen in `Grenzwerteingabe` (`MENUEBAUM.md`, `[S16]`).
+
+### Warum die Leitung warm wird — das ist Absicht
+
+Die Erwärmung belegt einen **hohen Prüfstrom**, und der ist bei dieser Messung
+vorgeschrieben. Der Grund ist einleuchtend, sobald man ihn einmal gehört hat:
+
+> Ein Schutzleiter, dessen Litze zu neunzig Prozent durchtrennt ist, zeigt
+> einem gewöhnlichen Ohmmeter mit wenigen Milliampere **einen tadellosen
+> Wert.** Die verbliebenen Drähte reichen für die Messung — aber nicht für den
+> Fehlerstrom, den sie im Ernstfall führen müssten.
+
+Erst ein Prüfstrom in der Größenordnung mehrerer Ampere bringt einen solchen
+Restquerschnitt zum Vorschein: Der Spannungsabfall steigt messbar, die Stelle
+erwärmt sich. **Die Erwärmung ist also kein Nebeneffekt, sondern der Sinn des
+Verfahrens.**
+
+Dass das Gerät diese Ströme liefert, erklärt zugleich zwei Beobachtungen von
+der Aufnahme der Baugruppen: den **Lüfter** auf der Rückwand und die
+**Absicherung mit 2 A** trotz kurzzeitig hoher Prüfströme — die Energie kommt
+aus einem Transformator, nicht direkt aus dem Netz.
+
+### Vorsicht bei dieser Messung
+
+⚠️ **Während der Messung nichts bewegen.** Das Datenblatt des DS601 warnt
+ausdrücklich davor, dass **„durch den hohen Messstrom Relaiskontakte […]
+zerstört werden"** können, wenn während der Messung Erschütterungen auftreten.
+Das gilt sinngemäß für die Kontakte im µP601 selbst und für Stecker und
+Kupplung des Prüflings: Wackeln unter Last brennt Kontakte an.
+
+⚠️ **Nicht unnötig wiederholen.** Jede Messung belastet Stromquelle,
+Relaiskontakte und Prüfling. Für die Aufnahme genügt ein sauberer Durchgang je
+Prüfschritt.
+
+⚠️ **Die Leitung ausgelegt prüfen, nicht aufgewickelt.** Nicht wegen der
+Induktivität — die liegt bei 50 Hz und wenigen Metern im Milliohm-Bereich und
+ist gegenüber 0,109 Ω bedeutungslos. Sondern wegen der **Wärmeabfuhr**: Im
+Bund addiert sich die Verlustwärme, die ausgelegt einfach abgestrahlt würde.
+
+### Die Erwärmung selbst ist ein Diagnosemittel
+
+Wenn die Leitung ohnehin warm wird, lohnt es, sie **unmittelbar nach der
+Messung abzutasten:**
+
+- **Gleichmäßig warm** → die Verlustleistung verteilt sich über die ganze
+  Länge, der Leiter ist durchgehend in Ordnung.
+- **Eine Stelle deutlich wärmer** → dort sitzt ein erhöhter Widerstand:
+  angebrochene Litze, kalte Klemmstelle im Stecker, Quetschung. **Genau der
+  Fehler, für den das Hochstromverfahren gemacht ist** — und er lässt sich mit
+  der Hand orten, ohne weiteres Gerät.
+
+Ein Gesamtwert im grünen Bereich schließt eine solche Stelle nicht aus: Ein
+paar zusätzliche Milliohm gehen im Messwert unter, machen sich thermisch aber
+bemerkbar.
+
+- [ ] Bei künftigen Leitungsprüfungen die Leitung ausgelegt lassen und
+      hinterher entlangtasten. Auffälligkeiten hier notieren.
+
+### Gemessen: Der Prüfstrom beträgt 16 A (2026-08-14)
+
+Mit der Stromzange am Prüfkabel erfasst: **16 A.**
+
+Damit ist die Erwärmung vollständig erklärt:
+
+| Größe | Wert |
+|---|---|
+| Prüfstrom | **16 A** |
+| Widerstand der Leitung | 0,109 Ω |
+| **Verlustleistung in der Leitung** | `I²·R` = **≈ 28 W** |
+| **Spannungsabfall über die Leitung** | `I·R` = **≈ 1,74 V** |
+
+28 W in einer Netzleitung sind erheblich — mehr als eine kleine Lötkolbenspitze.
+Dass die Leitung „richtig warm" wird, ist damit keine Auffälligkeit, sondern
+Arithmetik.
+
+**Was daraus über die Quelle folgt:** Bei 1,74 V Abfall über den Prüfling muss
+die Leerlaufspannung der Quelle nur wenige Volt betragen. Die aufgenommene
+Leistung liegt damit in der Größenordnung von 30 bis 60 VA — bequem innerhalb
+der **2 A / 250 V**, mit denen das Gerät abgesichert ist. Das bestätigt die
+Annahme einer **Niederspannungs-Hochstromwicklung am Transformator.**
+
+Es erklärt zugleich, warum die Prüfung **kurz** sein muss: Bei 16 A ist eine
+Dauermessung weder für den Trafo noch für die Relaiskontakte zumutbar.
+
+**Stromart: Wechselstrom** (bestätigt 2026-08-14). Der Prüfstrom ist
+**16 A AC**.
+
+Das passt zur einfachsten denkbaren Bauweise: eine **Niederspannungswicklung
+des Netztransformators, über Relais direkt auf den Prüfkreis geschaltet.**
+Kein Gleichrichter, keine Regelung, keine Siebung — der Strom stellt sich aus
+Wicklungsspannung und Prüflingswiderstand ein. Robust, und für ein Gerät von
+1990 die naheliegende Lösung.
+
+Streng genommen misst das Gerät damit eine **Impedanz**, nicht einen reinen
+Widerstand. Bei 50 Hz und Werten um 0,1 Ω ist der induktive Anteil einer
+Netzleitung jedoch vernachlässigbar — der angezeigte Wert ist praktisch der
+Wirkwiderstand.
+
+Nebenbei fügt sich die Zahl ins Gesamtbild: Prüfsteckdose, Leitungsprüfung und
+Prüfstrom liegen alle in der **16-A-Welt** eines gewöhnlichen Schuko-Stromkreises.
+Auch das DS601-Datenblatt nennt für Prüflinge „maximal 16 A (pro Phase)".
+**Das Gerät nennt den Prüfstrom nirgends.** Es zeigt ausschließlich den
+**Widerstandswert** an und druckt ihn aus (belegt 2026-08-14).
+
+Damit ist die Zangenmessung **die einzige Quelle für diese Angabe** — sie steht
+weder auf der Anzeige noch im Ausdruck, und ein Handbuch, das sie nennen
+könnte, existiert nicht. Ein Befund, den es ohne eigene Messung nicht gäbe.
+
+- [ ] Dauer der Strombeaufschlagung grob stoppen
+
+### Jede Messung wird gedruckt — lässt sich das abschalten?
+
+Der Messwert wird **automatisch ausgedruckt**. Beim Erkunden der Prüfschritte
+kostet das Farbband, ohne dass der Ausdruck jedes Mal gebraucht würde.
+
+- [ ] Gibt es eine Einstellung, den Ausdruck zu **unterdrücken**? Zu suchen im
+      `F`-Zweig (`MENUEBAUM.md`, `[S06]`) oder als eigener Punkt im
+      Prüfablauf.
+- [ ] Falls nicht: Beim weiteren Kartieren Prüfschritte **nur einmal**
+      auslösen und die Anzeige abschreiben, statt Messungen zu wiederholen.
+- [ ] Druckt auch der Zweig **`Nur Messgerät`** (`[S17]`)? Falls dort nicht
+      gedruckt wird, ist er nicht nur datenbankschonend, sondern auch
+      farbbandschonend — und damit erst recht der richtige Ort zum Erproben.
+
+### Vorhaben: Prüfstrom mit der Stromzange messen
+
+Um die Überschlagsrechnung durch einen Messwert zu ersetzen, soll der
+Prüfstrom mit einer **Stromzange** erfasst werden — an einem Prüfkabel, dessen
+Adern einzeln geführt, aber isoliert sind, sodass die Zange um **einen**
+Leiter gelegt werden kann.
+
+**Erst der billigere Versuch, bevor etwas gebaut wird:**
+
+Bei der Prüfung einer Geräteanschlussleitung fließt der Prüfstrom **nur durch
+den Schutzleiter** der Leitung — vom Schutzkontakt der Prüfsteckdose durch die
+Leitung zum Kaltgeräte-Einbaustecker und im Gerät zurück. **L und N der
+Leitung führen dabei nichts.**
+
+Damit hebt sich in der Leitung nichts auf, und die Zange sollte **um das
+gesamte Kabel gelegt** bereits den vollen Prüfstrom anzeigen.
+
+- [ ] **Zuerst das ungeteilte Prüfkabel umfassen.** Zeigt die Zange etwas an,
+      erübrigt sich der Aufbau.
+- [ ] Erst wenn dabei nichts oder ein zu kleiner Wert erscheint, ein Kabel mit
+      einzeln geführten Adern anfertigen.
+
+**Fallstricke bei der Messung:**
+
+| Punkt | Worauf zu achten ist |
+|---|---|
+| **AC oder DC?** | Ist der Prüfstrom **Gleichstrom**, zeigt eine gewöhnliche AC-Zange (Stromwandler) **nichts** an. Dann wird eine Zange mit **Hall-Sensor** gebraucht. Ein Ausschlag von null bei gleichzeitig warmem Kabel ist also selbst ein Befund: dann ist es DC. |
+| **Kurze Messdauer** | Der Prüfschritt dauert nur Sekunden. **MAX-/Peak-Hold** einschalten, sonst ist die Anzeige vorbei, bevor sie steht. |
+| **Messbereich** | Auf 10–30 A einstellen, nicht auf Milliampere. |
+| **Nur ein Leiter** | Umfasst die Zange Hin- und Rückleiter, hebt sich das Feld auf und sie zeigt null. |
+
+⚠️ **Ein Prüfkabel mit einzeln geführten Adern gehört ausschließlich zur
+Schutzleiterprüfung.** Dort liegt nur Niederspannung an. Käme dasselbe Kabel in
+einem Prüfschritt zum Einsatz, bei dem das Gerät **Netzspannung auf die
+Prüfsteckdose** legt, wären getrennt geführte L- und N-Adern eine ernste
+Gefahr. Ein solches Kabel deshalb **deutlich kennzeichnen** und getrennt von
+den übrigen Messleitungen aufbewahren.
 
 ---
 

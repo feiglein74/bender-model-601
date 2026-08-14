@@ -82,10 +82,32 @@ Zwei Schlüsse daraus:
 als `IEC 60601-1` wie im DS601-Datenblatt von 2006. Die anfängliche Vermutung
 zur „601" ist damit nicht mehr Deutung, sondern belegt.
 
-**Datierung auf etwa 1990–1993.** Die neuere der beiden Normausgaben ist von
-1990; ein Gerät wird nicht für Normen gebaut, die es noch nicht gibt. Das passt
-zu Zeichendisplay, Folientastatur, eingebautem Drucker und einer mit
-AA-Zellen gepufferten Uhr.
+**Datierung — berichtigt am 2026-08-14.** Erste Schätzung aus den Normausgaben
+war „etwa 1990–1993", weil die neuere der beiden unterstützten Normen von 1990
+ist. Das Typenschild korrigiert das nach unten:
+
+Die Herstelleranschrift trägt die **fünfstellige Postleitzahl `D-35301`** —
+gültig in Deutschland **erst ab dem 1. Juli 1993.** Das Gerät ist damit
+**frühestens von Mitte 1993.** Die Prüfplakette „Nächster Prüftermin" mit
+Jahresfeldern `98`–`03` belegt den Betrieb bis mindestens Anfang der 2000er.
+
+### Typenschild
+
+| | |
+|---|---|
+| Bezeichnung | `BENDER µP 601-1 — SICHERHEITSTESTER / SAFETY-TESTER` |
+| Artikel-Nr. | `B928161` |
+| **Werk-Nr.** | **`600521`** |
+| Ausführungskennung | `IVM 429 D` — dieselbe, die der Startbildschirm zeigt |
+| Schutzklasse | I |
+| Nennspannung | AC 48…62 Hz, 230 V |
+| **Leistungsaufnahme** | **150 VA** |
+| **Ausgangsleistung** | **3680 VA** = 230 V × 16 A — Durchleitung zur Prüfsteckdose |
+| Betriebsart | DB / Dauerbetrieb |
+| Hersteller | Dipl.-Ing. W. Bender GmbH + Co KG, D-35301 Grünberg |
+
+`IVM 429 D` steht damit **werkseitig auf dem Gerät** und ist keine Eingabe des
+Vorbesitzers. Einzelheiten in `FUNKTIONSAUFNAHME.md`, Abschnitt A.
 
 ### Nachtrag zur ersten Recherche
 
