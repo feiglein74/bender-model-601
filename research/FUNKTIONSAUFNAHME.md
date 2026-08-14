@@ -280,15 +280,37 @@ Quelle: `../bilder/verkaufsanzeige/rueckwand.webp`
 | Lüftungsschlitze | — | oberer Rand |
 | **Fest angeschlossene Netzleitung** mit Zugentlastung | — | siehe unten |
 
-### Die Netzleitung ist fest — damit ist der Kaltgeräte-Stecker geklärt
+### Die eigene Stromversorgung läuft über eine feste Leitung
 
-Das Gerät hat **keinen Kaltgeräte-Netzeingang**, sondern eine fest
-angeschlossene Netzleitung mit Zugentlastung auf der Rückwand. Der
-Kaltgeräte-Einbaustecker auf der **Front** kann damit nichts anderes sein als
-das, was Piktogramm 3 zeigt: der Anschluss für die **Leitungsprüfung**.
+**Zur Vermeidung eines Missverständnisses:** Der µP601 hat sehr wohl einen
+Kaltgeräte-Einbaustecker — aber **auf der Front, und als Prüfanschluss.**
+Seine *eigene* Stromversorgung bezieht er über eine **fest angeschlossene
+Netzleitung** mit Zugentlastung auf der Rückwand.
 
-Die früher offengelassene Möglichkeit, es handle sich um den Netzeingang des
-µP601 selbst, ist damit **widerlegt.**
+Damit ist die früher offengelassene Möglichkeit widerlegt, der Stecker auf der
+Front sei der Netzeingang des Geräts. Er ist das, was Piktogramm 3 zeigt: der
+Anschluss für die **Leitungsprüfung.**
+
+### Warum die Leitungsprüfung in der Medizintechnik einen eigenen Prüfschritt hat
+
+Abnehmbare **Geräteanschlussleitungen** sind in Kliniken und Praxen ein
+eigenständiges Prüfobjekt, und das aus praktischen Gründen:
+
+- Sie werden **häufiger bewegt, getreten und eingeklemmt** als das Gerät selbst
+  — Betten, Rollstative, fahrbare Geräte.
+- Sie sind **austauschbar und wandern zwischen Geräten.** Eine Leitung, die
+  gestern an einem geprüften Gerät hing, hängt heute an einem anderen.
+- Ein unterbrochener **Schutzleiter in der Zuleitung** hebt die Schutzmaßnahme
+  eines Schutzklasse-I-Geräts vollständig auf, ohne dass die Funktion des
+  Geräts darunter leidet — der Fehler bleibt also unbemerkt.
+
+Deshalb hat der µP601 dafür einen eigenen Anschluss und einen eigenen
+Prüfschritt: Schuko-Stecker der Leitung in die **Prüfsteckdose**,
+Kupplungsende auf den **Kaltgeräte-Einbaustecker**, und das Gerät misst über
+die geschlossene Schleife.
+
+- [ ] Im Menü nachsehen, wie dieser Prüfschritt heißt, und welche Größen er
+      misst — Durchgang allein, oder auch Isolation und Widerstandswert
 
 ### `Summer/Buzzer` abschaltbar
 
