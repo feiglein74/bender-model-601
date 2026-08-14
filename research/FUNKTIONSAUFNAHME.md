@@ -99,6 +99,24 @@ Für Drehstromprüflinge gibt es im Menü einen eigenen Eintrag.
       | **F** | **belegt: öffnet ein kontextabhängiges Menü** — vom Startbildschirm aus die Sprachauswahl |
       | **↑ / ↓** | Blättern in Listen, Auswahl, ziffernweises Verstellen (noch nicht belegt) |
 
+      ⚠️ **Beobachtung 2026-08-14: Tastendrücke gehen gelegentlich verloren.**
+      Beim Blättern in der Prüflingsdatenbank hat `↑` nicht auf jeden Druck
+      reagiert. Mögliche Ursachen, noch nicht unterschieden:
+
+      - **alternde Folientastatur** — bei einem Gerät dieses Alters die
+        naheliegendste; Kontaktfolien werden mit den Jahren unzuverlässig
+      - **Entprellung oder Wiederholsperre** der Firmware, die zu schnelle
+        Eingaben verwirft
+      - Bedienfehler, zu kurzer oder zu weit am Rand gesetzter Druck
+
+      - [ ] Betrifft es **alle** Tasten oder nur einzelne? Systematisch
+            durchprobieren und notieren, welche auffällig sind
+      - [ ] Hilft langsameres Drücken? Dann spricht es für die Firmware
+      - [ ] Hilft ein anderer Druckpunkt auf derselben Taste? Dann für die Folie
+
+      **Folge für alle Aufnahmen:** Zählungen nie aus der Zahl der
+      Tastendrücke ableiten, sondern aus dem, was auf der Anzeige steht.
+
       **Alle sieben Bedientasten sind LED-hinterleuchtet** — die drei Softkeys
       ebenso wie `START`, `F`, `↑` und `↓` (belegt 2026-08-14). Die LED zeigt
       an, **ob die Taste im gerade angezeigten Bildschirm etwas bewirkt.**

@@ -434,9 +434,51 @@ Startbildschirm `IVM429 D` steht. Deutungen:
 | **Zähler des Messdatenspeichers** — 57 gespeicherte Datensätze oder 57 freie Plätze | Mit dem Inhalt von `[S08]` vergleichen |
 | **Kennzahl der Betriebsart** | Nach Wahl einer Norm erneut ansehen — ändert sich die Zahl? |
 
-Die erste Lesart ist die folgenreichste: Ein Gerät mit Nummernblock und
-nummerierten Bildschirmen braucht keine Blätterfunktion. **Das wäre die Antwort
-auf die offene Frage, wie Listen mit mehr als drei Einträgen bedient werden.**
+### Nachtrag (2026-08-14): Der Datenbestand umfasst rund 69 Einträge
+
+Beim Blättern in `[S13]` gezählt: **etwa 69 verschiedene Gerätenummern.**
+
+⚠️ **Die Zahl ist eine Schätzung, kein Messwert.** Der Zähler hat beim
+Durchblättern möglicherweise Tastendrücke mitgezählt, auf die das Gerät nicht
+reagiert hat. Die tatsächliche Zahl kann darunter liegen — und die
+Rechnung unten steht und fällt mit ihr.
+
+Damit ist die Lesart „**57 = Anzahl der gespeicherten Datensätze**"
+**widerlegt** — es sind mehr.
+
+**Aber die Zahlen passen zusammen, wenn 57 die *freien* Plätze meint:**
+
+```
+69 belegt  +  57 frei  =  126
+```
+
+126 ist eine plausible Speicherkapazität für ein Gerät dieser Bauart —
+zwei Plätze unter 128. Das wäre die schlüssigste Deutung: **Zeile 1 von
+`[S06]` zeigt an, wie viele Prüflinge noch angelegt werden können.**
+
+Das ist vorerst Arithmetik, keine Beobachtung. Es steht und fällt mit der
+genauen Zahl:
+
+- [ ] **Verlässlich auszählen — aber nicht durch Zählen von Tastendrücken.**
+      Stattdessen jede angezeigte `Gerätenr` mitschreiben. Dann fallen
+      Wiederholungen und Auslassungen auf, und ein hängengebliebener
+      Tastendruck verfälscht das Ergebnis nicht.
+      **Noch besser: warten, bis die RS-232 läuft** — ein Auszug des ganzen
+      Bestands liefert die Zahl nebenbei und fehlerfrei
+      (`FUNKTIONSAUFNAHME.md`, Abschnitt E).
+- [ ] Zeigt sich irgendwo im Menü eine **Kapazitätsangabe**?
+- [ ] Ändert sich die `57`, wenn eine andere Betriebsart gewählt ist?
+      (Getrennte Kontingente für IEC und VDE wären denkbar.)
+
+**Nicht ausprobieren:** Einen Datensatz anlegen, um zu sehen, ob die Zahl auf
+56 fällt, wäre der direkte Beweis — aber ein Schreibvorgang im Bestand des
+Vorbesitzers. Erst, wenn der Bestand gesichert ist.
+
+Die zuvor erwogene Lesart „Bildschirmnummer" bleibt offen; sie klärt sich
+beiläufig, sobald auf einem anderen Bildschirm eine Zahl an derselben Stelle
+auftaucht. Ihre ursprüngliche Bedeutung — als möglicher Weg zur Bedienung
+langer Listen — ist dagegen hinfällig: **Listen werden mit `↑`/`↓` durch-
+geblättert** (`[S13]`).
 
 ### Noch aufzunehmen
 
@@ -450,11 +492,177 @@ auf die offene Frage, wie Listen mit mehr als drei Einträgen bedient werden.**
 
 ## [S07] Messroutine
 
-**Erreicht:** Softkey Zeile 2 von `[S06]` · **noch nicht betreten**
+**Erreicht:** Softkey Zeile 2 von `[S06]` · **aufgenommen 2026-08-14**
 
-Vermutlich der Einstieg in die eigentlichen Messungen — hier sollten sich die
-**sechs Piktogramme der Frontplatte** wiederfinden
-(`FUNKTIONSAUFNAHME.md`, Abschnitt A).
+```
+  1  Datenbank :
+  2  Zugriff ?
+  3> über Gerätenummer       → [S12]
+  4> über Suchen             → [S13]
+  LED: noch nicht notiert
+```
+
+### Der Messablauf beginnt nicht mit einer Messung, sondern mit dem Prüfling
+
+Bemerkenswert: Wer „Messroutine" wählt, landet **nicht** bei den Messgrößen,
+sondern bei einer **Datenbank**. Das Gerät ist prüflingsorientiert gebaut —
+zuerst wird festgelegt, *woran* gemessen wird, dann erst *was*.
+
+Das passt zum Einsatzzweck: Ein Sicherheitstester in der Medizintechnik prüft
+denselben Gerätebestand in wiederkehrenden Abständen. Die Zuordnung
+Messwert → Prüfling ist die eigentliche Leistung, nicht die Einzelmessung.
+
+**Damit ist auch klar, wo die sechs Piktogramme der Frontplatte auftauchen:**
+erst hinter der Prüflingsauswahl, nicht davor.
+
+### Die bekannten Muster bestätigen sich
+
+- **Zweizeilige Überschrift**: `Datenbank :` / `Zugriff ?` — dieselbe Form wie
+  `Betriebsart:` / `Prüfungen nach:` in `[S02]`.
+- **`?` für „nicht gesetzt"**: `Zugriff ?` — die Zugriffsart ist noch nicht
+  gewählt. Dritter Beleg für die Konvention.
+
+### Dieser Zweig beantwortet womöglich die Batteriefrage
+
+`über Suchen` führt in den vorhandenen Datenbestand. **Zeigt sich dort etwas,
+haben die Daten des Vorbesitzers die leere Pufferbatterie überlebt** — die
+offene Frage aus `BATTERIE.md`, Folge 2, wäre dann hier beantwortet, ohne den
+Umweg über `[S08]`.
+
+⚠️ **Nur ansehen, nicht messen.** Die Prüflingsauswahl ist der Einstieg in
+einen Prüfablauf, an dessen Ende Netzspannung auf der Prüfsteckdose liegt.
+Solange nichts angeschlossen ist, ist das Blättern in der Datenbank
+ungefährlich — aber `START` nicht aus Versehen drücken.
+
+### Und hier zeigt sich, wie das Gerät Listen bedient
+
+`über Suchen` setzt einen Bestand voraus, der größer ist als drei Einträge.
+**Das ist die Stelle, an der sich die seit `[S02]` offene Frage klärt:** Wie
+stellt ein Gerät mit drei Softkeys und ohne Blättertasten eine lange Liste dar?
+
+Zu beobachten:
+
+- [ ] Erscheinen mehrere Treffer gleichzeitig, oder einer nach dem anderen?
+- [ ] Womit wird weitergeblättert — ein Softkey, `↑`, der Nummernblock?
+- [ ] Trägt der Bildschirm rechts oben eine Zahl wie die `57` in `[S06]`?
+
+### Offene Frage: Was heißt „Gerätenummer" hier?
+
+Auf dem **Selbsttest-Ausdruck** (`[S03]`) steht ebenfalls eine
+`Gerätenummer` — dort naheliegenderweise die des µP601 selbst. Hier bezeichnet
+derselbe Begriff die Kennung eines **Prüflings**.
+
+- [ ] Sind das zwei verschiedene Dinge, oder benutzt die Firmware einen
+      einzigen Begriff für beides? Vergleich: Taucht die Nummer vom
+      Selbsttest-Ausdruck im Datenbestand als Eintrag auf?
+
+---
+
+## [S12] Datenbank → über Gerätenummer
+
+**Erreicht:** Softkey Zeile 3 von `[S07]` · **noch nicht betreten**
+
+Direkte Eingabe einer Prüflingsnummer, vermutlich über den Nummernblock.
+Erwartete Form: eine Eingabemaske wie `[S10]`, mit `↑` zum Übernehmen.
+
+## [S13] Datenbank → über Suchen
+
+**Erreicht:** Softkey Zeile 4 von `[S07]` · **aufgenommen 2026-08-14**
+
+```
+  1  Gerätenr:112
+  2  IEC                     (linksbündig)
+  3> Daten                   → [S14]
+  ?> Ende                    → zurück
+  LED: ↑ ● · ↓ ●  — blättern durch den Datenbestand
+```
+
+- [ ] **Klärungsbedarf zur Zeilenzuordnung:** Stehen `Daten` und `Ende` auf
+      **einer** Zeile nebeneinander, oder auf Zeile 3 und Zeile 4? Ersteres
+      wäre ein Bruch mit dem bisherigen Bild, dass jede belegte Zeile genau
+      einem Softkey entspricht — und damit ein wichtiger Nachtrag zur Notation.
+
+## Der Datenbestand des Vorbesitzers ist erhalten
+
+**`Gerätenr:112`** — es sind Prüflinge gespeichert, und mit `↑`/`↓` lässt sich
+durch sie blättern.
+
+Damit ist die offene Frage aus `BATTERIE.md` beantwortet: **Der Messdaten-
+speicher hing nicht an der leeren Pufferbatterie.** Er ist nichtflüchtig —
+so wie Betreibertext und Gerätenummer, die den Spannungsverlust ebenfalls
+überstanden haben.
+
+**Der Bestand ist damit auch beim späteren Batteriewechsel nicht gefährdet.**
+
+⚠️ Trotzdem gilt weiter: Es ist die einzige Kopie. Keine Lösch-, Rücksetz-
+oder Neuanlagefunktion bestätigen, bevor der Bestand gesichert ist.
+
+## `↑`/`↓` blättern hier durch Datensätze — Nachtrag zum Tastenmodell
+
+Bisher galt: `↑` = eine Ebene hinein oder bestätigen, `↓` = eine Ebene heraus.
+**In einer Liste bewegen sie sich stattdessen durch die Einträge.**
+
+Die Lesart bleibt im Kern erhalten — `↑` vorwärts, `↓` rückwärts —, aber
+**worin** vorwärts und rückwärts gegangen wird, hängt vom Bildschirm ab:
+
+| Bildschirmart | `↑` | `↓` |
+|---|---|---|
+| Auswahlmenü | eine Ebene hinein | eine Ebene heraus |
+| Eingabemaske `[S10]` | Wert übernehmen | ○ dunkel |
+| **Liste `[S13]`** | **nächster Datensatz** | **vorheriger Datensatz** |
+
+**Damit ist die seit `[S02]` offene Frage beantwortet:** Das Gerät braucht
+keine gesonderte Blätterfunktion und keine Direktwahl über den Nummernblock —
+in Listen sind `↑`/`↓` die Blättertasten. Der Menübaum ist deshalb schmal
+gebaut, die Listen aber beliebig lang.
+
+Der Verlass bleibt die LED: Sie sagt, dass die Taste etwas tut. Was sie tut,
+sagt der Bildschirm.
+
+## Zeile 2: `IEC` — vermutlich das Prüfregime des Datensatzes
+
+Beim Blättern ändert sich **mit der Gerätenummer auch Zeile 2.** Sie gehört
+also zum Datensatz, nicht zum Bildschirm.
+
+Arbeitsvermutung: Dort steht, **nach welcher Norm dieser Prüfling geprüft
+wird** — passend zur Betriebsartenwahl in `[S02]`, wo `IEC 601-1:1988` und
+`DIN VDE 0751T1/90` zur Wahl stehen. Jeder Prüfling trüge damit sein
+Prüfregime mit sich.
+
+- [ ] **Gegenprobe:** Weiterblättern, bis ein Datensatz erscheint, in dem
+      **nicht** `IEC` steht. Taucht dort `VDE`, `0751` oder Ähnliches auf, ist
+      die Deutung belegt.
+- [ ] Erscheint noch etwas anderes in Zeile 2 — Klassifizierung des Prüflings
+      (Schutzklasse, Anwendungsteil-Typ), ein Name, ein Datum?
+
+## Weiteres zum Mitschreiben beim Blättern
+
+- [ ] **Wie viele Datensätze gibt es?** Bis ans Ende blättern und zählen.
+      Passt die Zahl zur `57` aus `[S06]`? Dann wäre die `57` ein Zähler des
+      Datenbestands — und keine Bildschirmnummer.
+      Beachte: `Gerätenr:112` ist größer als 57, die Nummern müssen also nicht
+      lückenlos sein.
+- [ ] Niedrigste und höchste Gerätenummer
+- [ ] Läuft die Liste am Ende um, oder stoppt sie?
+- [ ] Trägt dieser Bildschirm rechts oben eine Zahl?
+- [ ] Was tut `F` von hier aus?
+
+---
+
+## [S14] Datensatz → Daten
+
+**Erreicht:** Softkey `Daten` von `[S13]` · **noch nicht betreten**
+
+Hier liegen die eigentlichen Angaben zu einem Prüfling — und damit
+voraussichtlich das, was der Vorbesitzer über Jahre erfasst hat.
+
+- [ ] Welche Felder hat ein Datensatz
+- [ ] Stehen dort **Messwerte** früherer Prüfungen, oder nur Stammdaten?
+- [ ] Sind Datumsangaben dabei? Wegen der stehengebliebenen Uhr sind sie
+      unzuverlässig, die **Reihenfolge** bleibt aussagekräftig
+- [ ] **Lässt sich ein Datensatz ausdrucken?** Dann wäre er gesichert — und
+      der Ausdruck ließe sich später über die RS-232 wesentlich bequemer
+      wiederholen (`FUNKTIONSAUFNAHME.md`, Abschnitt E)
 
 ## [S08] Messdatenverwaltung
 

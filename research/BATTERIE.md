@@ -32,9 +32,30 @@ Wenn dieselbe Zelle **auch den Datenspeicher** puffert, sind die Prüflinge und
 Protokolle des Vorbesitzers **bereits verloren**, und zwar lange bevor dieses
 Projekt begann.
 
-**Das ist ohne jeden Eingriff prüfbar und sollte als Nächstes geschehen:**
+### Beantwortet (2026-08-14): Der Datenbestand ist erhalten
 
-- [ ] Im Menü die **Prüflings- und Protokollverwaltung** aufrufen
+Über `Messroutine → Datenbank → über Suchen` (`MENUEBAUM.md`, `[S13]`) zeigt
+sich ein **gefüllter Prüflingsbestand** — `Gerätenr:112`, mit `↑`/`↓`
+durchblätterbar.
+
+**Der Messdatenspeicher hing also nicht an dieser Batterie.** Er ist
+nichtflüchtig, so wie Betreibertext und Gerätenummer, die den Spannungsverlust
+ebenfalls überstanden haben. Verloren ist allein die **Uhr**.
+
+**Folgen:**
+
+- Der Bestand ist beim späteren Batteriewechsel **nicht gefährdet.**
+- Die Daten des Vorbesitzers sind auswertbar — mit dem Vorbehalt, dass
+  **Datumsangaben unzuverlässig** sind, weil die Uhr über einen unbekannten
+  Zeitraum falsch lief. Aussagekräftig bleibt die **Reihenfolge**.
+- Damit entfällt der Grund, vor dem Batteriewechsel den Speicher zu retten.
+
+⚠️ Unverändert gilt: Es ist die einzige Kopie. Keine Lösch- oder
+Rücksetzfunktion bestätigen.
+
+<details><summary>Ursprüngliche Fragestellung, vor der Klärung</summary>
+
+- [x] Im Menü die **Prüflings- und Protokollverwaltung** aufrufen
       (`MENUEBAUM.md`, `[S02]`)
 
 | Ergebnis | Schluss |
@@ -50,6 +71,8 @@ also nicht in demselben gepufferten RAM wie die Uhr.
 
 Damit ist Folge 2 schon halb beantwortet und die Aussicht gut, dass auch die
 Prüfdaten liegen geblieben sind.
+
+</details>
 
 ## Entscheidung (2026-08-14): zurückgestellt
 
