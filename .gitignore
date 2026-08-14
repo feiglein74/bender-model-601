@@ -1,0 +1,29 @@
+# ─── Herstellerunterlagen ───────────────────────────────────────────────
+# Urheberrechtlich geschuetzt. Bezugsquellen stehen in QUELLEN.md.
+docs/
+
+# Aus denselben Unterlagen extrahierter Volltext
+research/text/
+
+# Aus denselben Unterlagen extrahierte Abbildungen.
+# Eigene Fotos liegen direkt in bilder/ und werden veroeffentlicht;
+# alles aus Handbuechern Extrahierte kommt in einen Unterordner und
+# wird hier eingetragen.
+
+# Fotos aus der Verkaufsanzeige (nicht selbst aufgenommen)
+bilder/verkaufsanzeige/
+
+# ─── Fremde Binaerdateien ───────────────────────────────────────────────
+software/
+
+# ─── Aus dem Geraet ausgelesene Staende ─────────────────────────────────
+# Firmware, Speicherabbilder, Datentraegerabbilder. Nur lokal.
+firmware/
+
+# ─── Betriebssystem / Werkzeuge ─────────────────────────────────────────
+Thumbs.db
+desktop.ini
+.DS_Store
+.claude/
+__pycache__/
+*.pyc
