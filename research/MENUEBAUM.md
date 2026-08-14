@@ -102,6 +102,10 @@ Baum geformt ist.
 Regeln:
 
 - **Alle vier Zeilen** notieren, auch leere — die Anordnung ist Teil des Befunds.
+- **Die Kopfzeile trägt nie ein `>`.** Sie nennt Thema und aktuellen Wert und
+  ist rein beschreibend — belegt an `[S02]`, `[S04]`, `[S06]`, `[S07]`, `[S09]`
+  und `[S13]`. Sie kann sich über **zwei Zeilen** erstrecken (`[S02]`, `[S07]`).
+  Was handelt, steht darunter.
 - **Wörtlich** abschreiben, samt Abkürzungspunkten, Doppelpunkten, Leerzeichen.
 - **LED-Zustand aller vier Tasten** festhalten. Eine leuchtende LED ohne
   bekanntes Ziel ist ein unerledigter Zweig.
@@ -391,7 +395,182 @@ kennt es sie — entweder fest eingestellt oder gemessen.
 
 ## [S04] Betriebsart „IEC 601-1:1988"
 
-**Erreicht:** Softkey Zeile 3 von `[S02]` · **noch nicht betreten**
+**Erreicht:** Softkey Zeile 3 von `[S02]` · **Aufnahme begonnen 2026-08-14**
+
+```
+  1  Betriebsart:   IEC
+  2> Klassifikation          → [S15]
+  3> Grenzwerteingabe        → [S16]
+  4> Nur Messgerät           → [S17]
+  LED: noch nicht notiert
+```
+
+### Drei Wege, und einer davon ist der wichtigste für dieses Projekt
+
+| Zweig | Was dahintersteckt |
+|---|---|
+| **`Klassifikation`** | Einordnung des Prüflings — Schutzklasse, Anwendungsteil-Typ. Der Einstieg in den **vollständigen genormten Prüfablauf** mit Bewertung und Protokoll. |
+| **`Grenzwerteingabe`** | Die Grenzwerte sind **einstellbar**, nicht fest verdrahtet. Bemerkenswert für ein Normprüfgerät — und ein Ort, an dem man **nichts verstellen sollte**, solange die Werkseinstellung unbekannt ist. |
+| **`Nur Messgerät`** | **Betrieb als reines Messgerät**, ohne Prüfablauf, ohne Bewertung, ohne Datenbank. |
+
+### `Nur Messgerät` — der gefahrlose Zugang zu den Messfunktionen
+
+Das ist der praktisch wertvollste Fund dieses Bildschirms. Ein Modus, der
+**einzelne Messungen ohne Prüflingsbezug** erlaubt, bedeutet:
+
+- **Keine Datensätze werden angelegt oder verändert.** Der Bestand des
+  Vorbesitzers bleibt unangetastet — das war die Sorge, die bisher jedes
+  Ausprobieren am lebenden Gerät gebremst hat.
+- **Kein Ausdruck am Ende**, vermutlich — also kein Verschleiß am Druckwerk.
+- Die **einzelnen Messgrößen** sollten hier unmittelbar wählbar sein. Damit ist
+  das voraussichtlich der Ort, an dem sich die **sechs Piktogramme der
+  Frontplatte** wiederfinden (`FUNKTIONSAUFNAHME.md`, Abschnitt A).
+
+**Für Abschnitt F der Funktionsaufnahme ist damit der Weg gefunden:** Messungen
+werden über `Nur Messgerät` erprobt, nicht über den Prüfablauf.
+
+### `Grenzwerteingabe` — ansehen, nicht ändern
+
+Dass sich Grenzwerte eingeben lassen, ist für sich schon eine Aussage über das
+Gerät: Es ist nicht auf eine Normfassung festgenagelt, sondern anpassbar.
+
+⚠️ **Werte notieren, bevor irgendetwas verändert wird.** Ob es eine Funktion
+„Werkseinstellung" gibt, ist unbekannt. Ein verstellter Grenzwert ist ohne
+Kenntnis des Ausgangswerts nicht wiederherstellbar — und er würde jede spätere
+Bewertung stillschweigend verfälschen.
+
+- [ ] Alle Grenzwerte **vollständig abschreiben**, bevor dort etwas passiert.
+      Das ist zugleich ein wertvolles Dokument: die Grenzwerttabelle der
+      IEC 601-1:1988, wie dieses Gerät sie führt.
+- [ ] Gilt die Eingabe je Betriebsart getrennt? Der VDE-Zweig `[S05]` hätte
+      dann eigene Werte.
+
+### Noch aufzunehmen
+
+- [ ] LED-Zustand · Ziel von `↓` · Verhalten von `F`
+- [ ] Trägt Zeile 1 rechts eine Zahl?
+
+### Bestätigt: Die Kopfzeile zeigt den gültigen Wert
+
+`Betriebsart:   IEC` — an derselben Stelle, an der in `[S06]` noch
+`Betriebsart ?` stand. **Das Fragezeichen ist durch den gewählten Wert
+ersetzt.** Damit ist das Bauprinzip der Oberfläche endgültig belegt:
+
+> Zeile 1 nennt Thema und aktuellen Wert. `?` heißt „nicht gesetzt".
+
+Die Gegenprobe, die für `[S06]` vorgemerkt war, ist damit erledigt.
+
+### Bestätigt: `IEC` in `[S13]` ist das Prüfregime des Datensatzes
+
+Das Gerät kürzt die Betriebsart hier mit **`IEC`** ab — **genau die
+Zeichenfolge**, die in der Prüflingsdatenbank `[S13]` in Zeile 2 steht und sich
+beim Blättern mit dem Datensatz ändert.
+
+Damit ist die dortige Arbeitsvermutung so gut wie belegt: **Jeder Prüfling
+trägt sein Prüfregime mit sich.** Die endgültige Gegenprobe bleibt, einen
+Datensatz zu finden, bei dem stattdessen die VDE-Kennung steht.
+
+### `Klassifikation` als erster Schritt
+
+Nach der Norm kommt die **Einordnung des Prüflings** — Schutzklasse,
+Anwendungsteil-Typ. Genau das erwartet der Erwartungsrahmen in
+`FUNKTIONSAUFNAHME.md`: Ohne Klassifizierung gibt es keine Grenzwerte, und
+ohne Grenzwerte kein Bestanden/Nicht bestanden.
+
+Der Ablauf zeichnet sich damit ab:
+
+```
+Prüfling wählen  →  Norm  →  Klassifikation  →  Messung  →  Bewertung  →  Ausdruck
+```
+
+- [ ] Zeilen 3 und 4, LED-Zustand, Ziele der Softkeys
+- [ ] Trägt `Klassifikation` ein `>`, oder ist es eine Überschrift zu den
+      Zeilen darunter?
+
+## [S15] IEC → Klassifikation
+
+**Erreicht:** Softkey Zeile 2 von `[S04]` · **aufgenommen 2026-08-14**
+
+```
+  1  Schutzklasse:
+  2> Klasse I               → [S18]
+  3> Klasse II              → [S19]
+  4> int. Stromquelle       → [S20]
+  LED: noch nicht notiert
+```
+
+### Die Klassifikation beginnt mit der Schutzklasse
+
+Drei Möglichkeiten, und sie decken den Geltungsbereich der IEC 601-1
+vollständig ab:
+
+| Auswahl | Prüfling |
+|---|---|
+| **Klasse I** | Schutz durch **Schutzleiter** — Gehäuse ist mit PE verbunden |
+| **Klasse II** | **schutzisoliert**, kein Schutzleiter |
+| **int. Stromquelle** | **Gerät mit interner Stromquelle** — batteriebetrieben, ohne Netzanschluss |
+
+### `int. Stromquelle` ergänzt den Erwartungsrahmen
+
+Der Erwartungsrahmen in `FUNKTIONSAUFNAHME.md` führte nur **Schutzklasse I und
+II** auf. Die dritte Kategorie der Norm — **Geräte mit interner Stromquelle** —
+fehlte dort. **Das Gerät ist vollständiger als der Rahmen, gegen den es
+gehalten wurde.**
+
+Das ist keine Kleinigkeit: Ein batteriebetriebenes Medizingerät hat keinen
+Netzanschluss, also auch keinen Erdableitstrom und keine netzbezogenen
+Fehlerbedingungen. Geprüft werden dort im Wesentlichen **Patientenableitstrom**
+und **Patientenhilfsstrom** — und genau dafür sind die zehn Buchsen auf der
+Front da.
+
+Erwartung für diesen Zweig: **ein deutlich kürzerer Prüfumfang** als bei
+Klasse I. Gute Gelegenheit, das Gerät beim Denken zu beobachten — was es
+weglässt, sagt so viel wie das, was es prüft.
+
+### Erwartung für den nächsten Schritt
+
+Nach der Schutzklasse fehlt noch der **Anwendungsteil-Typ (B / BF / CF)**.
+Er bestimmt die Grenzwerte für die Patientenableitströme und ist für ein
+Medizinprüfgerät unverzichtbar.
+
+- [ ] Kommt er als nächster Bildschirm — oder ist er anderswo untergebracht?
+- [ ] Gibt es zusätzlich „**ohne Anwendungsteil**" für Geräte ohne
+      Patientenkontakt?
+
+---
+
+## [S18] Klassifikation → Klasse I
+
+**Erreicht:** Softkey Zeile 2 von `[S15]` · **noch nicht betreten**
+
+## [S19] Klassifikation → Klasse II
+
+**Erreicht:** Softkey Zeile 3 von `[S15]` · **noch nicht betreten**
+
+## [S20] Klassifikation → int. Stromquelle
+
+**Erreicht:** Softkey Zeile 4 von `[S15]` · **noch nicht betreten**
+
+## [S16] IEC → Grenzwerteingabe
+
+**Erreicht:** Softkey Zeile 3 von `[S04]` · **noch nicht betreten**
+
+⚠️ **Nur ansehen und abschreiben.** Siehe Warnung bei `[S04]`.
+
+## [S17] IEC → Nur Messgerät
+
+**Erreicht:** Softkey Zeile 4 von `[S04]` · **noch nicht betreten**
+
+**Der Zweig, über den später gemessen wird.** Hier sollten die einzelnen
+Messgrößen unmittelbar wählbar sein.
+
+- [ ] Welche Messgrößen werden angeboten — Abgleich mit den **sechs
+      Piktogrammen** der Frontplatte
+- [ ] Wird beim Aufruf bereits etwas geschaltet? **Solange das offen ist,
+      nichts an Prüfsteckdose und Buchsen angeschlossen lassen.**
+- [ ] Erscheinen Messwerte fortlaufend, oder erst auf `START`?
+
+---
 
 ## [S05] Betriebsart „DIN VDE 0751T1/90"
 
@@ -651,18 +830,51 @@ Prüfregime mit sich.
 
 ## [S14] Datensatz → Daten
 
-**Erreicht:** Softkey `Daten` von `[S13]` · **noch nicht betreten**
+**Erreicht:** Softkey `Daten` von `[S13]` · **zurückgestellt 2026-08-14**
 
-Hier liegen die eigentlichen Angaben zu einem Prüfling — und damit
-voraussichtlich das, was der Vorbesitzer über Jahre erfasst hat.
+Hier liegen die Angaben zu einem Prüfling — das, was der Vorbesitzer über Jahre
+erfasst hat.
 
-- [ ] Welche Felder hat ein Datensatz
-- [ ] Stehen dort **Messwerte** früherer Prüfungen, oder nur Stammdaten?
-- [ ] Sind Datumsangaben dabei? Wegen der stehengebliebenen Uhr sind sie
-      unzuverlässig, die **Reihenfolge** bleibt aussagekräftig
-- [ ] **Lässt sich ein Datensatz ausdrucken?** Dann wäre er gesichert — und
-      der Ausdruck ließe sich später über die RS-232 wesentlich bequemer
-      wiederholen (`FUNKTIONSAUFNAHME.md`, Abschnitt E)
+### Die Messdaten sind nur über den Drucker zugänglich
+
+**Befund:** Die Messdaten lassen sich **ausschließlich ausdrucken**, nicht auf
+der Anzeige durchsehen. Bei vier Zeilen zu je etwa zwanzig Zeichen ist das
+nachvollziehbar — ein vollständiger Prüfbericht mit Messgrößen, Bedingungen
+und Grenzwerten passt dort nicht hinein. Der Drucker ist nicht Beiwerk,
+sondern **die eigentliche Ausgabe des Geräts.**
+
+### Entscheidung: zurückgestellt
+
+**Der Bestand wird vorerst nicht ausgedruckt.** Jeder Ausdruck belastet den
+**Nadeldrucker** — Farbband und Druckkopf sind Verschleißteile, für die es
+nach über dreißig Jahren keinen selbstverständlichen Ersatz gibt. 69 Datensätze
+einzeln auszudrucken, nur um sie zu lesen, wäre ein schlechtes Geschäft.
+
+**Damit hängt die Auswertung des Datenbestands an der RS-232.** Sie ist nicht
+mehr nur bequemer, sondern der **einzige verschleißfreie Weg** an diese Daten.
+Das Vorhaben aus `STAND.md` — den Ausdruck elektronisch aufnehmen — bekommt
+dadurch einen zweiten, unabhängigen Zweck: nicht nur künftige Protokolle
+sichern, sondern den **vorhandenen Bestand überhaupt erst lesbar machen.**
+
+Beruhigend dabei: Der Bestand ist nichtflüchtig und hat schon Jahre ohne
+Batterie überstanden. **Es eilt nicht.**
+
+### Wenn die Schnittstelle läuft
+
+- [ ] Bestand vollständig auslesen und sichern
+- [ ] Welche Felder hat ein Datensatz — Stammdaten, Messwerte, oder beides?
+- [ ] Datumsangaben: wegen der stehengebliebenen Uhr unzuverlässig, die
+      **Reihenfolge** bleibt aussagekräftig
+- [ ] Exakte Zahl der Datensätze — Gegenprobe zur `57` in `[S06]`
+
+### Vorher, ohne Verschleiß
+
+- [ ] **Einen einzigen** Datensatz ausdrucken, um das Protokollformat zu
+      kennen. Einer genügt und ist gut investiert: Er zeigt, welche Felder es
+      gibt, und dient später als Vergleich für das, was über die RS-232
+      ankommt.
+- [ ] Zeigt `[S14]` auf der Anzeige wenigstens **einzelne Felder**, bevor
+      gedruckt wird — oder führt der Weg unmittelbar zum Ausdruck?
 
 ## [S08] Messdatenverwaltung
 

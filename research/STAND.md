@@ -158,8 +158,16 @@ allem die restlichen Übertragungsparameter (Datenbits, Parität, Handshake) —
 zu suchen im `F`-Zweig des Menüs — und die Frage, ob das Gerät auch Befehle
 entgegennimmt oder nur sendet.
 
-Bis dahin gilt trotzdem: **Papier sparen.** Jeder Ausdruck, der jetzt entsteht,
-sollte fotografiert werden — Thermopapier verblasst.
+Bis dahin gilt trotzdem: **sparsam drucken.** Die gespeicherten Messdaten
+lassen sich nur über den Drucker ausgeben, und jeder Ausdruck kostet
+Verschleiß. Die Bauart des Druckwerks ist noch nicht gesichert — der erste
+Eindruck ist ein Nadeldrucker; ob Farbband oder Thermokopf das Verschleißteil
+ist, klärt `FUNKTIONSAUFNAHME.md`, Abschnitt A.
+
+**Daraus ist ein zweiter, unabhängiger Grund für das Vorhaben geworden:** Die
+RS-232 ist nicht nur der bequemere Weg für künftige Protokolle, sondern der
+einzige verschleißfreie Zugang zu den **69 bereits gespeicherten Datensätzen**
+des Vorbesitzers.
 
 ## Einordnung: Vorgänger der UNIMET-Reihe
 

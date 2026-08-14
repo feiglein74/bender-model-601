@@ -235,15 +235,126 @@ Rechts neben der Anzeige sitzt ein **Papierschacht mit Sichtfenster**, darin
 ein bedruckter Streifen. Lesbar ist darauf **`Klasse:1`** — also die
 Schutzklasse des Prüflings. Das Gerät **druckt Prüfprotokolle selbst aus.**
 
-Folgen für die weitere Arbeit:
+### Bauart: kein Thermodrucker (belegt 2026-08-14)
 
-- Der Ausdruck ist eine **eigene Ausgabeschnittstelle** neben der Anzeige und
-  zeigt Dinge, die auf vier Zeilen nicht passen. Ein Probeausdruck in
-  Abschnitt F ist deshalb wertvoll — er liefert das vollständige Protokollformat.
-- **Papier und Farbband/Thermokopf sind Verschleißteile.** Vor ausgiebigem
-  Drucken klären, welches Papier passt und ob noch Vorrat da ist.
-- Ob der Drucker der einzige Ausgabeweg ist oder daneben eine Datenschnittstelle
-  existiert, ist offen — die Rückwand ist noch nicht aufgenommen (Abschnitt E).
+**Prüfung am vorhandenen Ausdruck:** Ein auf etwa 300 °C aufheizender
+Lötkolben in Papiernähe hinterlässt **keine Spur.** Thermopapier hätte sich
+weit darunter geschwärzt — meist ab 60–90 °C.
+
+**Direkte Thermografie ist damit ausgeschlossen.** Zusammen mit dem
+Sichteindruck bleibt ein **Anschlagdrucker (Nadeldrucker)** die schlüssige
+Deutung.
+
+Streng genommen offen bleibt nur noch der **Thermotransferdruck** — er nutzt
+zwar Hitze, überträgt aber Farbe von einem Band auf Normalpapier und bestünde
+diese Probe ebenfalls. In einem Einbaudruckwerk von etwa 1990 ist er weniger
+üblich als ein Nadelwerk.
+
+- [ ] **Letzte Unterscheidung, ohne Werkzeug:** Die **Rückseite des Papiers
+      befühlen.** Ein Anschlagdruckwerk hinterlässt eine fühlbare **Prägung**,
+      Thermotransfer nicht.
+
+**Praktisch ändert das wenig** — beide Bauarten haben ein **Farbband als
+Verschleißteil** und liefern **dauerhafte Ausdrucke.** Damit gilt gesichert:
+
+- **Die Ausdrucke verblassen nicht.** Ein früher hier notierter Hinweis,
+  Ausdrucke wegen Verblassens sofort zu fotografieren, war **falsch** und ist
+  gegenstandslos. Fotografieren bleibt gute Dokumentation, aber ohne Zeitdruck.
+- **Verschleißteile sind Farbband und Druckwerk**, nicht das Papier. Nach über
+  dreißig Jahren nicht selbstverständlich zu ersetzen; Farbbänder trocknen aus,
+  Nadeln brechen.
+- **Jeder Ausdruck kostet Substanz.** Ausdrucke bewusst setzen, nicht beiläufig.
+- Das Gerät braucht **Normalpapier**, kein Spezialpapier — Nachschub ist damit
+  kein Problem, solange Rollenbreite und Kern passen.
+
+- [ ] Rollenbreite und Kerndurchmesser messen, für den Fall des Nachkaufs
+
+### Vermutung: Nadelwerk mit erschöpfter Endlos-Farbbandkassette
+
+Arbeitsvermutung (2026-08-14): ein **Nadeldruckwerk mit umlaufender
+Farbbandkassette**, deren Band **ausgeschrieben** ist. Dafür spricht ein
+blasses Schriftbild bei ansonsten sauberem Zeichenaufbau.
+
+**Das wäre der günstigste denkbare Verschleißfall.** Einbaudruckwerke dieser
+Größe und Zeit verwenden fast durchweg genormte Endloskassetten — die
+verbreitetste Familie stammt von Epson (`ERC`-Reihe, etwa `ERC-05`, `ERC-09`,
+`ERC-22`), verbaut in unzähligen Registrierkassen, Taxametern, Waagen und
+Messgeräten. **Ein guter Teil dieser Kassetten wird bis heute hergestellt**,
+weil der Bestand an Altgeräten groß ist. Preislich bewegt sich das im Bereich
+weniger Euro.
+
+### Das Druckwerk ist ein herausnehmbares Modul (belegt 2026-08-14)
+
+**Zwei Rändelschrauben von vorn, und der Drucker ist draußen.** Er ist als
+wartbare Baugruppe konstruiert, nicht fest eingebaut.
+
+Auf `../bilder/verkaufsanzeige/frontplatte_detail.webp` ist das rechts
+erkennbar: eine **eigene, abgesetzte Frontplatte** mit **Rändelschraube**,
+darunter ein **Sichtfenster mit gezahnter Abrisskante** und dem Papierstreifen
+(`Klasse:1`). Die zweite Schraube liegt außerhalb des Bildausschnitts.
+
+Das ist folgenreicher, als es klingt:
+
+- **Farbband und Papier sind ohne Öffnen des Geräts erreichbar.**
+- **Typenschild und Aufdrucke des Druckwerks werden lesbar**, sobald es
+  herausgezogen ist — damit auch Hersteller und Typnummer, die zum Datenblatt
+  führen.
+- **Es muss eine Steckverbindung zur Hauptplatine geben**, sonst ließe sich das
+  Modul nicht entnehmen. Damit liegt die Frage „**wie bekommt das Druckwerk
+  seine Zeichen?**" an einem **zugänglichen Steckverbinder** — nicht irgendwo
+  auf einer Platine im Inneren. Ein Zeichenstrom ließe sich dort abgreifen,
+  ohne das Gerät selbst zu öffnen.
+
+⚠️ Vor dem Herausziehen **Netzstecker ziehen.**
+
+- [ ] Bauform und Polzahl des Steckverbinders notieren
+- [ ] Aufdrucke auf Druckwerk und Farbbandkassette vollständig aufnehmen
+- [ ] Fotos → `../bilder/`
+
+**Nächster Schritt:**
+- [ ] **Aufdruck der Kassette vollständig notieren** — Hersteller, Typnummer,
+      Farbe. Das ist die Bestellnummer; danach lässt sich unmittelbar suchen.
+- [ ] Ist ein **Aufdruck am Druckwerk selbst** lesbar (Epson `M-…`, Seiko,
+      Citizen)? Der führt zum Datenblatt des Werks — und beantwortet nebenbei
+      die offene Frage, **wie das Werk seine Zeichen bekommt** (siehe unten),
+      ohne dass etwas aufgeschraubt werden muss.
+
+**Wenn ein frisches Band eingelegt ist**, lohnt sich der eine geplante
+Probeausdruck eines Datensatzes deutlich mehr: sauber lesbar, und als
+Vergleichsvorlage für das, was später über die RS-232 ankommt.
+
+Ein blasses Schriftbild ist übrigens **kein** Hinweis auf ein defektes
+Druckwerk. Erst wenn ganze Punktzeilen fehlen, ist eine Nadel gebrochen — und
+das lässt sich am vorhandenen Ausdruck bereits prüfen.
+
+- [ ] Fehlen im Schriftbild durchgehend einzelne Punktzeilen?
+
+### Offen: Wie bekommt der Drucker seine Zeichen?
+
+Unabhängig von der Bauart ist die **Anbindung** noch ungeklärt — bekommt das
+Druckwerk fertige **Zeichen** von der Hauptplatine, oder wird der **Druckkopf
+direkt** angesteuert? Das war ursprünglich die Frage, die über den Aufwand des
+Auslesevorhabens entschied (`STAND.md`).
+
+Durch die RS-232 ist sie für das Vorhaben **nicht mehr kritisch**, bleibt aber
+für das Verständnis des Geräts interessant — und wird beim Öffnen mit einem
+Blick auf die Verbindung zum Druckwerk zu beantworten sein.
+
+### Der Drucker ist die eigentliche Ausgabe des Geräts
+
+**Die gespeicherten Messdaten lassen sich ausschließlich ausdrucken**, nicht
+auf der Anzeige durchblättern (`MENUEBAUM.md`, `[S14]`). Bei vier Zeilen zu
+etwa zwanzig Zeichen ist das folgerichtig — ein vollständiger Prüfbericht
+passt dort nicht hinein.
+
+Damit ist der Drucker kein Beiwerk, sondern der Hauptausgabeweg. Und damit
+wird die **RS-232 auf der Rückwand** (Abschnitt E) zum einzigen
+verschleißfreien Zugang zu den Daten des Geräts.
+
+- [ ] Welches Papier passt, und ist Vorrat vorhanden?
+- [ ] Zustand des Farbbands — kräftiges oder blasses Schriftbild?
+- [ ] Fehlen im Schriftbild einzelne Punktzeilen? Das wäre eine gebrochene
+      Nadel und ein Befund, den man am besten früh kennt.
 
 ### Tastatur — vollständig gelesen
 
