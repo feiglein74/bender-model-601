@@ -691,6 +691,74 @@ Der Startbildschirm zeigt
 Noch nicht aufgenommen: der vollständige Wortlaut aller vier Zeilen, die
 genaue Position jeder Angabe, Selbsttest, Kalibrierdatum.
 
+### 🔑 Das Gerät prüft beim Einschalten die Lage seines eigenen Netzsteckers
+
+**Befund 2026-08-15:** Beim Einschalten stellt der µP601 fest, **welcher Stift
+seines eigenen Schuko-Steckers die Phase führt.** Steckt der Stecker
+„falsch herum", fordert er auf, **auszuschalten und den Stecker zu drehen.**
+
+- [ ] Wortlaut der Meldung wörtlich notieren
+- [ ] Was zeigt er, wenn die Lage stimmt — eine Bestätigung, oder gar nichts?
+- [ ] Prüft er auch bei jedem Einschalten neu, oder merkt er sich etwas?
+
+### Warum das für dieses Gerät zwingend ist
+
+Ein Schuko-Stecker ist **umkehrbar** — er passt in beiden Lagen, und damit
+liegt L mal am einen, mal am anderen Stift. Für die meisten Geräte ist das
+belanglos. Für einen Sicherheitstester ist es die Grundlage von allem:
+
+**1. Die Fehlerbedingungen sind seitenabhängig.** Das Gerät stellt im
+Prüfablauf gezielt Erst-Fehler her — das DS601-Datenblatt nennt
+**„Netzleiter offen"** und **„Phase vertauscht"**. Beide Begriffe setzen
+voraus, dass das Gerät weiß, **welcher Leiter die Phase ist.** „Netzleiter
+offen" bedeutet je nach Seite etwas völlig anderes: Wird N aufgetrennt, liegt
+der Prüfling weiter an Potential; wird L aufgetrennt, ist er spannungsfrei.
+Ein Gerät, das das verwechselt, misst Unsinn und meldet trotzdem „bestanden".
+
+**2. Ableitströme sind auf die Phase bezogen.** Die Ströme, die über Gehäuse,
+Schutzleiter und Anwendungsteil abfließen, stammen aus der Netzspannung gegen
+Erde. Welcher der beiden Leiter diese Spannung führt, bestimmt Größe und
+Bewertung des Messwerts.
+
+**3. „Phase vertauscht" lässt sich nur herstellen, wenn eine Ausgangslage
+bekannt ist.** Das Gerät dreht L und N an der **Prüfsteckdose** um — dazu muss
+es die eigene Einspeisung kennen.
+
+### Die Bauentscheidung dahinter
+
+Bender hätte das intern lösen können: zwei zusätzliche Relais in der eigenen
+Zuleitung, die bei falscher Lage umschalten. Stattdessen **meldet das Gerät
+und verlangt einen Handgriff.**
+
+Das ist die konservativere Lösung, und für ein Prüfgerät die richtige. Ein
+Relais in der eigenen Netzzuleitung wäre ein Bauteil, dessen Versagen
+unbemerkt bliebe und **jede folgende Messung still verfälschen** würde. Ein
+Hinweis auf der Anzeige kann nicht klemmen.
+
+Es passt zur Haltung, die das ganze Gerät zeigt: Lieber einen definierten
+Zustand verlangen, als stillschweigend ausgleichen.
+
+### Wie es das vermutlich feststellt — und was daraus folgt
+
+Naheliegend ist eine **Spannungsmessung beider Netzleiter gegen den
+Schutzleiter**. Im TN- oder TT-Netz liegt N nahe Erdpotential, L auf etwa
+230 V gegen Erde. Der Unterschied ist eindeutig und mit einfachen Mitteln zu
+erfassen.
+
+Daraus folgen zwei Dinge, die im Alltag zählen:
+
+- **Die Prüfung setzt einen funktionierenden Schutzleiter voraus.** Ohne
+  brauchbaren Erdbezug ist keine Aussage möglich. Damit prüft das Gerät
+  nebenbei **die Steckdose, an der es selbst hängt** — verweigert es an einer
+  bestimmten Dose beharrlich den Dienst, lohnt der Blick auf deren
+  Installation.
+- **An einem IT-Netz oder hinter einem Trenntransformator** führen beide
+  Leiter kein definiertes Potential gegen Erde. Dort dürfte die Erkennung
+  fehlschlagen — kein Defekt, sondern eine Betriebsgrenze.
+
+- [ ] Verhält sich das Gerät an verschiedenen Steckdosen gleich?
+- [ ] Meldet es etwas Eigenes, wenn der Schutzleiter fehlt?
+
 ### Der Besitzername ist ein programmierbares Feld
 
 Dass der Voreigentümer auf dem Startbildschirm steht, heißt: das Gerät

@@ -146,6 +146,60 @@ Ein **601ST** taucht darin nicht auf. Denkbare Erklärungen, alle noch unbelegt:
   stehen als für Bender GmbH & Co. KG.
 - **D — Sach-/Bestellnummer** statt Modellbezeichnung.
 
+## Herkunft: MACK Medizin-Technik GmbH, Nürnberg
+
+Der Startbildschirm trägt den Betreibertext des Vorbesitzers, wörtlich
+(aufgenommen 2026-08-15):
+
+```
+  2  MACK
+  3  Medizin-Technik GmbH
+  4  90482 Nürnberg
+```
+
+**Recherche vom 2026-08-15:** Die Firma besteht bis heute — heutige
+Schreibweise **MACK Medizintechnik GmbH**, Schupfer Straße 3, 90482 Nürnberg,
+gegründet 1947, Webauftritt `mack-med.de`. Sie handelt mit Medizintechnik für
+Kliniken und Praxen und ist Stützpunkthändler mehrerer Hersteller.
+
+Das Gerät schrieb noch die ältere Form mit Bindestrich, `Medizin-Technik`.
+
+### Das Bild wird stimmig
+
+Ein Medizintechnik-Händler mit Service für Kliniken und Praxen ist genau der
+Betrieb, der einen Sicherheitstester nach IEC 601-1 und DIN VDE 0751 braucht:
+zur Prüfung der Geräte, die er verkauft, wartet und instand setzt.
+
+Das erklärt auch den **Datenbestand von rund 69 Prüflingen**
+(`MENUEBAUM.md`, `[S13]`) — kein privater Fundus, sondern ein betreuter
+Gerätepark. Und es passt zur **Prüfplakette** auf dem Gehäuse mit
+Jahresfeldern `98`–`03`: Das Gerät stand selbst im Prüfumlauf, wie es sich für
+ein gewerblich genutztes Prüfmittel gehört.
+
+Nebenbei ein Datierungshinweis: Der Betreibertext nennt die **fünfstellige
+Postleitzahl `90482`** — er wurde also frühestens Mitte 1993 eingegeben, wie
+schon das Typenschild nahelegt.
+
+### 🔑 Der aussichtsreichste Weg zum Handbuch
+
+Bislang gilt: Ein Handbuch des µP601 ist öffentlich nicht auffindbar
+(`QUELLEN.md`). **Der Vorbesitzer besteht aber noch als Unternehmen** — und
+das ist der bessere Ansatz als eine allgemeine Anfrage beim Hersteller:
+
+- Er hat das Gerät über Jahre betrieben und dabei **mit Unterlagen gearbeitet.**
+- Er kennt die **Werk-Nr. `600521`** möglicherweise aus eigenen Aufzeichnungen.
+- Als Fachhändler hat er Zugang zu Herstellerkanälen, die einem Privatmann
+  verschlossen bleiben.
+
+- [ ] Anfrage formulieren: höflich, mit Werk-Nr. `600521`, Artikel-Nr.
+      `B928161` und Ausführung `IVM 429 D`. Gefragt sind Bedienungsanleitung,
+      Schnittstellenbeschreibung und alles zum Softwarestand.
+- [ ] Parallel Bender selbst anfragen (`QUELLEN.md`)
+
+⚠️ **Vor einer Anfrage klären, wie viel preisgegeben werden soll.** Der
+Betreibertext und die 69 Datensätze enthalten möglicherweise Angaben zu
+Kunden des Unternehmens. Für die Anfrage genügen die Gerätenummern.
+
 ## Vorhaben nach Abschluss der Aufnahme
 
 **Ein Modul, das den Ausdruck aufnimmt und anzeigt, statt ihn auf Papier zu

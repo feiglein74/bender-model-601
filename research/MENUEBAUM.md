@@ -120,6 +120,140 @@ Regeln:
 
 ---
 
+## [S30] Spannungstest — beim Einschalten, vor allem anderen
+
+**Erreicht:** läuft selbsttätig nach dem Einschalten · **aufgenommen 2026-08-15**
+
+```
+  1  Spannungstest
+  2  <leer>
+  3  Bitte warten !
+  4  <leer>
+```
+
+Das Gerät stellt hier fest, **welcher Stift seines eigenen Schuko-Steckers die
+Phase führt.** Bei falscher Lage fordert es auf, auszuschalten und den Stecker
+zu drehen. Begründung und Folgen: `FUNKTIONSAUFNAHME.md`, Abschnitt B.
+
+**Der Name bestätigt die Vermutung:** Es ist ein **Spannungstest**, keine
+Strommessung — also der Vergleich beider Netzleiter gegen den Schutzleiter.
+
+### [S31] Meldung bei falscher Steckerlage
+
+**Aufgenommen 2026-08-15, wörtlich:**
+
+```
+  1  Bitte ausschalten
+  2  und Netzstecker des
+  3  µP-Tester in der
+  4  Steckdose drehen!
+```
+
+**Die Anzeige stellt das `µ` tatsächlich dar** (bestätigt 2026-08-15) — dort
+steht `µP-Tester`, nicht `uP-Tester`.
+
+Das ist ein kleiner Hardwarehinweis: Das Zeichen `µ` liegt im
+Standard-Zeichensatz **HD44780 A00** auf Platz `0xE4`. Dass es verfügbar ist,
+stützt die Annahme eines **HD44780-kompatiblen Zeichendisplays**
+(`FUNKTIONSAUFNAHME.md`, Abschnitt A) — bislang nur aus der Bauform
+geschlossen.
+
+- [ ] Weitere Sonderzeichen im Betrieb sammeln — `Ω`, `°`, Umlaute. Sie
+      grenzen den Zeichensatz weiter ein. `Ω` liegt im A00-Satz auf `0xF4`,
+      Umlaute dagegen **nicht** — erscheinen sie trotzdem (`Prüfsteckdose`,
+      `Gerätenr`), sind sie entweder selbstdefinierte Zeichen oder das Display
+      trägt einen anderen Zeichensatz.
+
+**Alle vier Zeilen sind Text** — kein `>`, keine Auswahl. **Aber `START`
+leuchtet**, und ein Druck darauf **startet die Spannungserkennung neu**
+(belegt 2026-08-15).
+
+Die Meldung ist also kein Endzustand: Man dreht den Stecker und drückt
+`START`, statt aus- und wieder einzuschalten. Der Text ist insofern strenger
+formuliert als das Gerät sich verhält — verständlich, denn **das Ziehen des
+Steckers ist ohnehin nötig**, um ihn zu drehen, und dabei geht das Gerät
+sowieso aus.
+
+Die Bauentscheidung aus `FUNKTIONSAUFNAHME.md`, Abschnitt B, bleibt davon
+unberührt: Das Gerät gleicht die Steckerlage nicht selbst aus. Es prüft nur
+auf Verlangen erneut.
+- [ ] Steht dort wirklich **`up-Tester`**, oder zeigt die Anzeige ein
+      **`µ`** (`µP-Tester`)? Das Zeichen `µ` ist im Standard-Zeichensatz
+      solcher Displays vorhanden — schreibt Bender es trotzdem als `u` aus,
+      wäre das ein Hinweis auf den verwendeten Zeichenvorrat.
+
+### Nachtrag zur Typografie
+
+Die Meldung endet mit **`drehen!`** — **ohne** Leerzeichen vor dem
+Ausrufezeichen, anders als `Bitte warten !` in `[S30]` und `[S03]`.
+
+Damit ist die frühere Notiz zu berichtigen: Es handelt sich **nicht** um eine
+durchgehaltene Schreibkonvention, sondern schlicht um **Uneinheitlichkeit**
+innerhalb desselben Softwarestands. Das reiht sich in `SET:`, `ja`/`Nein` und
+die wechselnde Schreibung von `>>> Nur Messung <<<` ein.
+
+### Der Startvorgang ist damit vollständig (2026-08-15)
+
+```
+Einschalten
+   │
+   └─► [S30] Spannungstest — „Bitte warten !"  ◄─────────┐
+          │                                              │
+          ├─ Phasenlage falsch ─► [S31] „Bitte ausschalten …"
+          │                        START ● ── erneut prüfen ┘
+          │
+          └─ Phasenlage richtig ─► [S00] Startbildschirm
+                                    Betreibername · IVM429 D
+```
+
+**Der Systemselbsttest `[S03]` gehört *nicht* zum Startvorgang.** Er wird
+ausschließlich von Hand ausgelöst, mit `↓` vom Startbildschirm.
+
+### Warum diese Aufteilung folgerichtig ist
+
+Das Gerät unterscheidet zwei Arten von Prüfung an sich selbst — und behandelt
+sie verschieden:
+
+| | Spannungstest `[S30]` | Systemselbsttest `[S03]` |
+|---|---|---|
+| Auslösung | **zwingend**, bei jedem Einschalten | **freiwillig**, auf Tastendruck |
+| Gegenstand | die **Umgebung** — Phasenlage der Steckdose | das **Gerät** — eigene Baugruppen |
+| Bei Nichtbestehen | **Betrieb wird verweigert** | Ausdruck, sonst keine Sperre bekannt |
+| Ausdruck | keiner beobachtet | ja, mit Datum, Zeit, Nennspannung, Gerätenummer |
+
+**Erzwungen wird, was die Messungen verfälschen würde; freigestellt bleibt,
+was nur der Diagnose dient.** Die Phasenlage ist Voraussetzung jeder
+folgenden Messung — ohne sie wären „Netzleiter offen" und „Phase vertauscht"
+bedeutungslos. Deshalb steht sie vor allem anderen und lässt sich nicht
+übergehen.
+
+Für die Praxis heißt das: **Das Gerät kann nicht falsch herum betrieben
+werden.** Wer eine Messung von ihm bekommt, hat die richtige Phasenlage —
+das ist keine Frage der Sorgfalt des Anwenders.
+
+### Musterbildung: „Bitte warten !"-Bildschirme
+
+Dieselbe Form wie beim Systemselbsttest `[S03]`:
+
+```
+  1  <was gerade läuft>
+  2  <leer>
+  3  Bitte warten !
+  4  <leer>
+```
+
+Damit ist ein weiteres Bauprinzip der Oberfläche belegt: **Läuft ein Vorgang
+ohne Zutun des Anwenders, steht in Zeile 1 sein Name und in Zeile 3
+`Bitte warten !`** — keine Softkeys, kein `>`. Beim Kartieren sind solche
+Bildschirme daran sofort zu erkennen.
+
+Bemerkenswert die Schreibweise mit **Leerzeichen vor dem Ausrufezeichen**
+(`Bitte warten !`) — französische Typografie im deutschen Text, an beiden
+Stellen gleich. Eine weitere Eigenart des Softwarestands `IVM429 D`, neben
+`SET:`, `ja`/`Nein` und `>>> Nur Messung <<<` / `>>> NUR MESSUNG <<<`.
+
+---
+
 ## [S00] Startbildschirm
 
 **Erreicht:** nach dem Einschalten · aus jeder Lage mit `START`
@@ -178,6 +312,22 @@ belegt. Zwei Lesarten, die dasselbe Blinken erzeugen:
 aber **nichts, worauf man beim Eingeben von Daten vertrauen sollte.** Beim
 Kartieren gefahrlos benutzen — beim späteren Arbeiten mit Prüflingsdaten nicht
 mitten in einer Eingabe drücken.
+
+### Nachtrag (2026-08-15): Deutung A gewinnt deutlich
+
+Auf der Meldung `[S31]` — falsche Steckerlage — leuchtet `START`, und ein
+Druck darauf **lässt den Spannungstest `[S30]` von vorn laufen.**
+
+`START` stößt dort also **den Startvorgang neu an**, nicht bloß einen
+Bildschirmwechsel. Das ist genau das Verhalten, das Deutung **A — Neustart der
+Anwendung** vorhersagt, und es erklärt zugleich das kurze Erlöschen der LEDs
+auf `[S00]`: Dort läuft dieselbe Routine, findet aber nichts vor, was sie
+ändern müsste.
+
+Damit ist die ursprüngliche Beobachtung des Bedieners — „sieht aus wie
+Reset" — **bestätigt**. Offen bleibt nur noch der Umfang: Ob `START` auch
+Einstellungen wie die Sprache auf Vorgabewerte zurücksetzt, klärt weiterhin
+der Test oben (auf Englisch stellen, `START` drücken, nachsehen).
 
 **Noch aufzunehmen:**
 
