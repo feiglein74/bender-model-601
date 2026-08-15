@@ -107,6 +107,11 @@ Regeln:
   und `[S13]`. Sie kann sich über **zwei Zeilen** erstrecken (`[S02]`, `[S07]`).
   Was handelt, steht darunter.
 - **Wörtlich** abschreiben, samt Abkürzungspunkten, Doppelpunkten, Leerzeichen.
+- **Groß- und Kleinschreibung einzelner Wörter gilt als unsicher**, solange sie
+  nicht eigens nachgeprüft wurde — sie verrutscht beim Abschreiben zu leicht,
+  um daraus etwas abzuleiten. Belegte Eigenarten des Softwarestands sind
+  stattdessen `SET:` samt englischer Feldkürzel, die wechselnde Schreibung von
+  `>>> Nur Messung <<<` und `Bitte warten !` gegenüber `drehen!`.
 - **LED-Zustand aller vier Tasten** festhalten. Eine leuchtende LED ohne
   bekanntes Ziel ist ein unerledigter Zweig.
 - Auf jedem Bildschirm **`↑` und `↓` antippen**, sofern ihre LED leuchtet, und
@@ -719,9 +724,6 @@ Wort, das nach Option aussieht.
 Auch das `?` fügt sich in die bekannte Konvention: ein noch nicht gesetzter
 Wert. Hier zugleich als Frage gelesen.
 
-**Schreibweise wörtlich:** `ja` klein, `Nein` groß. Uneinheitlich — als
-Eigenart des Softwarestands `IVM429 D` festgehalten, passend zum englischen
-`SET:` in `[S10]`.
 
 ### Warum diese Frage an dieser Stelle steht
 
@@ -847,11 +849,254 @@ Messgrößen unmittelbar wählbar sein.
 
 ## [S05] Betriebsart „DIN VDE 0751T1/90"
 
-**Erreicht:** Softkey Zeile 4 von `[S02]` · **teilweise aufgenommen 2026-08-14**
+**Erreicht:** Softkey Zeile 4 von `[S02]` · **aufgenommen 2026-08-15**
 
-Der Aufbau entspricht dem IEC-Zweig `[S04]`: Klassifikation,
-Grenzwerteingabe, Nur Messgerät. Der Weg zur ersten Messung führte über
-**`Nur Messgerät`** → `[S26]`.
+```
+  1  Betriebsart:    VDE
+  2> Klassifikation          → …
+  3> Grenzwertangabe         → …
+  4> Nur Messgerät           → [S26]
+  LED: noch nicht notiert
+```
+
+### Bestätigt: `VDE` ist die Kurzform
+
+Die Betriebsart wird mit **`VDE`** abgekürzt, so wie die andere mit `IEC`
+(`[S04]`). Damit steht das Gegenstück fest, nach dem in der
+Prüflingsdatenbank `[S13]` zu suchen ist:
+
+- [ ] **Beim Blättern durch die Datensätze nach einem Eintrag mit `VDE` in
+      Zeile 2 suchen.** Findet sich einer, ist endgültig belegt, dass jeder
+      Prüfling sein Prüfregime mit sich trägt.
+
+### Beide Zweige heißen `Grenzwerteingabe`
+
+Nachgelesen am 2026-08-15: In beiden Betriebsarten lautet der Menüpunkt
+**`Grenzwerteingabe`**. Eine zwischenzeitlich vermutete Unterscheidung
+(`-angabe` gegen `-eingabe`, also nur anzeigen gegen einstellen) beruhte auf
+einem Abschreibfehler und ist gegenstandslos.
+
+Die sachliche Frage dahinter bleibt aber offen und ist zu prüfen:
+
+- [ ] **Sind die Grenzwerte in beiden Betriebsarten wirklich veränderbar?**
+      DIN VDE 0751 gibt für die Wiederholungsprüfung feste Grenzwerte vor —
+      dass das Gerät sie dort zur Eingabe anbietet, muss nicht heißen, dass es
+      sie auch annimmt.
+- [ ] **Führen beide Zweige eigene Werte?** Naheliegend, weil die Normen
+      unterschiedliche Grenzen setzen — aber zu belegen.
+
+⚠️ Zum Nachsehen genügt das Öffnen. **Nichts verändern**, in keinem der beiden
+Zweige — die Werkseinstellung ist unbekannt und nicht wiederherstellbar.
+
+---
+
+## [S32] VDE → Grenzwerteingabe → Verfahrensfrage
+
+**Erreicht:** Softkey Zeile 3 von `[S05]` · **aufgenommen 2026-08-15**
+
+```
+  1  Ableitstrommessung:
+  2  Prüfling in Betrieb
+  3> nehmen?     Ja        → …
+  4>    Nein               → …
+  LED: noch nicht notiert
+```
+
+### Nicht die Grenzwerttabelle, sondern zuerst das Verfahren
+
+`Grenzwerteingabe` führt **nicht unmittelbar zu einer Werteliste**, sondern
+stellt zuerst eine Verfahrensfrage. Das ist folgerichtig: **Ein Grenzwert für
+den Ableitstrom ist ohne das Messverfahren nicht bestimmt.** DIN VDE 0751
+setzt für die beiden Verfahren unterschiedliche Grenzen.
+
+### 🔑 Die vorhergesagte Unterscheidung ist da
+
+Der Erwartungsrahmen in `FUNKTIONSAUFNAHME.md` sagte für den VDE-Zweig
+voraus, dass zwischen **Direktmessung** und **Ersatzableitstrommessung**
+unterschieden wird. Genau das steckt hinter dieser Frage:
+
+| Antwort | Verfahren |
+|---|---|
+| **`Ja`** | **Direktmessung** — der Prüfling läuft an der Prüfsteckdose, gemessen wird der tatsächlich fließende Ableitstrom. Realistisch, aber mit Netzspannung am Prüfling. |
+| **`Nein`** | **Messung am stromlosen Prüfling** — Ersatzableitstrom- oder Differenzstromverfahren. Zwischen den gebrückten Netzkontakten und Gehäuse bzw. Anwendungsteil wird eine Prüfspannung angelegt. Sicherer, in der Wiederholungsprüfung üblich. |
+
+- [ ] Bestätigen: Nennt das Gerät weiter unten die Verfahren beim Namen —
+      `Ersatzableitstrom`, `Differenzstrom`, `Direktmessung`?
+- [ ] Unterscheiden sich die Grenzwerte je nach Antwort? Das wäre der Beleg
+      dafür, warum die Frage hier steht.
+
+---
+
+## [S33] VDE → Grenzwerteingabe → Schutzleiter
+
+**Erreicht:** Antwort `Nein` auf `[S32]` · **aufgenommen 2026-08-15**
+
+```
+  1  Grenzwerteingabe:
+  2  Schutzleiter
+  3  <leer>
+  4  R-PE :       Ω
+  LED: noch nicht notiert
+```
+
+### Die Grenzwerte kommen einzeln, nicht als Liste
+
+Nach der Verfahrensfrage folgt **ein Bildschirm je Grenzwert** — hier der
+erste: der **Schutzleiterwiderstand**, bezeichnet als **`R-PE`**, Einheit
+**`Ω`**.
+
+Es ist also **keine blätterbare Tabelle**, sondern eine geführte Abfolge.
+Damit erklärt sich auch, warum das Gerät ohne Blätterfunktion auskommt: Wo
+andere Geräte eine Liste anbieten, führt der µP601 Schritt für Schritt.
+
+- [ ] Womit geht es zum nächsten Grenzwert — `↑`, ein Softkey, oder erst nach
+      einer Eingabe?
+- [ ] **Wie viele Grenzwerte folgen insgesamt?** Die Abfolge ist die
+      vollständige Liste der Prüfgrößen, die dieses Gerät kennt — und damit
+      die genaueste Antwort auf die Ausgangsfrage „was kann das Gerät".
+
+### Offen und wichtig: Wird der gespeicherte Wert angezeigt?
+
+Auf der Zeile steht `R-PE :` und rechts die Einheit `Ω` — **ein Zahlenwert
+wurde nicht mit notiert.**
+
+### Geklärt: Der gespeicherte Wert wird *nicht* angezeigt
+
+Zwischen `:` und `Ω` steht **keine Zahl** (bestätigt 2026-08-15). Das Feld ist
+leer und erwartet eine Eingabe, **ohne den geltenden Grenzwert zu zeigen.**
+
+**Damit ist die Grenzwerttabelle auf diesem Weg nicht lesbar.** Der Plan,
+sie hier abzuschreiben, ist gescheitert.
+
+### Das ist kein Einzelfall, sondern Bauart
+
+Dasselbe Verhalten zeigt die Uhr-Eingabemaske `[S10]`: Auch dort sind alle
+Felder leer, obwohl im Gerät Werte stehen. Daraus wird eine Regel:
+
+> **Eingabemasken zeigen den Ist-Wert nicht.** Sie nehmen entgegen, sie
+> berichten nicht.
+
+Der Ist-Wert steht stattdessen an anderer Stelle — bei der Uhr auf einem
+eigenen Bildschirm `Anzeigen` `[S11]`, sonst in der Kopfzeile
+(`Betriebsart: IEC`, `Uhrzeit ?`).
+
+- [ ] **Gibt es für die Grenzwerte ein Gegenstück zu `Anzeigen`?** Bei der Uhr
+      hat Bender Ansehen und Ändern sauber getrennt. Falls es das hier auch
+      gibt, ist die Tabelle doch lesbar — zu suchen im `F`-Zweig oder als
+      weiterer Punkt neben `Grenzwerteingabe`.
+
+⚠️ **Erst recht nichts eingeben.** Ein leeres Feld verrät nicht, was es
+ersetzen würde. Diesen Bildschirm ausschließlich mit `START` verlassen.
+
+### `↑` leuchtet — und es ist unklar, was es tut
+
+Auf `[S33]` ist die **`↑`-LED an** (belegt 2026-08-15). Nach dem
+Tastenmodell heißt das „übernehmen". Bei einem **leeren** Feld sind aber zwei
+Wirkungen denkbar, und sie sind nicht zu unterscheiden, ohne es zu tun:
+
+| Deutung | Folge bei leerem Feld |
+|---|---|
+| **`↑` = Wert übernehmen** | Der gespeicherte Grenzwert wird durch nichts oder durch `0` ersetzt — **Verlust** |
+| **`↑` = weiter zum nächsten Grenzwert** | Leeres Feld heißt „unverändert lassen", die Abfolge läuft weiter — **harmlos** |
+
+Für eine geführte Abfolge wäre die zweite Lesart naheliegend. Sie am
+Grenzwertsatz auszuprobieren, wäre trotzdem leichtsinnig: Trifft die erste zu,
+ist ein Wert unwiederbringlich weg, dessen Ausgangszustand niemand kennt.
+
+### Geklärt (2026-08-15): `↑` blättert weiter
+
+Mit leerem Feld gedrückt, **springt das Gerät zum nächsten Grenzwert** — der
+ebenfalls leer ist. `↑` wirkt hier also als **Weiter**, nicht als
+„übernehmen".
+
+**Damit ist die Abfolge gefahrlos durchblätterbar** — und das ist mehr wert,
+als es zunächst klingt:
+
+> **Die Reihenfolge der Grenzwertbildschirme ist die vollständige Liste der
+> Größen, die dieses Gerät bewertet.** Auch ohne die Zahlenwerte beantwortet
+> sie die Ausgangsfrage „was kann das Gerät" genauer als alles andere bisher.
+
+- [ ] **Die ganze Abfolge durchblättern und jede Bezeichnung mit Einheit
+      notieren** — `R-PE : Ω`, und was danach kommt. Ergebnis unten eintragen.
+- [ ] Läuft sie am Ende um, oder mündet sie irgendwo?
+- [ ] Dieselbe Abfolge im **IEC-Zweig** aufnehmen und vergleichen. Der
+      Unterschied zwischen beiden Listen ist der Unterschied zwischen den
+      beiden Normwelten, wie dieses Gerät sie sieht.
+
+**Restunsicherheit, ehrlich vermerkt:** Dass das erste Feld *unverändert*
+blieb, ist damit **nicht** bewiesen — nachsehen lässt es sich nicht, weil das
+Gerät gespeicherte Grenzwerte nirgends anzeigt. Die Wahrscheinlichkeit spricht
+klar für „unverändert" (sonst wären fortgeschaltete Felder auch nicht leer,
+sondern genullt sichtbar), aber die Gegenprobe bleibt das **Prüfprotokoll**:
+Steht dort ein plausibler Grenzwert neben dem Messwert, ist alles in Ordnung.
+
+### Der gefahrlose Ersatzversuch: an der Uhr
+
+**Die Uhr ist das ideale Versuchsobjekt.** Ihre Eingabemaske `[S10]` ist
+genauso gebaut — mehrere Felder, alle leer —, und ihr Inhalt ist **ohne Wert**:
+Ohne Batterie geht er beim Ausschalten ohnehin verloren, und neu stellen
+dauert eine halbe Minute.
+
+- [ ] **Versuch:** Uhr stellen, damit ein bekannter Stand vorliegt. Dann
+      `[S10]` erneut aufrufen, **ein einzelnes Feld leer lassen**, die übrigen
+      ausfüllen, `↑` drücken — und in `[S11] Anzeigen` nachsehen.
+      → **Alter Wert steht noch:** Leer bedeutet „unverändert". Dann ist `↑`
+        auch bei den Grenzwerten ungefährlich.
+      → **Feld ist genullt:** Leer überschreibt. Dann darf `↑` auf `[S33]`
+        **nie** gedrückt werden.
+
+Ein Versuch am wertlosen Objekt, der die Frage für das wertvolle beantwortet.
+
+### Wie die Grenzwerte doch noch zu bekommen sind
+
+**Über ein vollständiges Prüfprotokoll.** In einem echten Prüfablauf — nicht
+in `Nur Messung` — bewertet das Gerät jeden Messwert und druckt ihn aus.
+Prüfprotokolle solcher Geräte stellen üblicherweise **Messwert und Grenzwert
+gegenüber**, samt Urteil.
+
+Das ist der eine Ausdruck, der sich wirklich lohnt:
+
+- [ ] Einen vollständigen Prüfablauf an einem **harmlosen Prüfling** fahren
+      (`FUNKTIONSAUFNAHME.md`, Abschnitt F) und das Protokoll aufheben.
+      Es liefert in einem Zug das **Protokollformat**, die **Prüfschritt-
+      reihenfolge** und voraussichtlich die **Grenzwerte**.
+- [ ] Ergibt sich daraus die Tabelle, in `research/` als eigenes Dokument
+      festhalten — sie existiert sonst nirgends.
+
+Alternativ später über die RS-232, wenn dort dasselbe ausgegeben wird.
+
+### Zeichensatz: `Ω` ist bestätigt
+
+Die Anzeige stellt **`Ω`** dar. Zusammen mit dem `µ` aus `[S31]` sind damit
+zwei Zeichen belegt, die im **HD44780-A00-Zeichensatz** enthalten sind
+(`µ` auf `0xE4`, `Ω` auf `0xF4`).
+
+Die Annahme eines HD44780-kompatiblen Zeichendisplays ist damit gut gestützt.
+Offen bleibt allein die Herkunft der **Umlaute** — sie fehlen im A00-Satz und
+dürften als selbstdefinierte Zeichen im CGRAM liegen
+(`FUNKTIONSAUFNAHME.md`, Abschnitt A).
+
+⚠️ **Die Antwort `Ja` ist eine Ansage.** Sie bedeutet, dass das Gerät im
+weiteren Verlauf **Netzspannung auf die Prüfsteckdose legt** und den Prüfling
+in Betrieb nimmt. Solange nur kartiert wird und nichts angeschlossen ist, ist
+das folgenlos — aber es ist der Punkt, ab dem das gilt.
+
+### Layout und Schreibweise
+
+Die Frage läuft über die Zeilen 2 und 3, und **Zeile 3 trägt zugleich die
+Antwort `Ja`** — dasselbe Muster wie `[S18]` („fest angeschlossenes / Gerät ?
+ja"). Die Regel von dort bestätigt sich.
+
+
+---
+
+### Aufbau identisch zum IEC-Zweig
+
+Beide Betriebsarten bieten dieselben drei Wege. Der Unterschied liegt also
+**nicht in der Gliederung**, sondern in dem, was hinter den Zweigen steckt —
+Prüfschritte, Verfahren und Grenzwerte. Für die Aufnahme heißt das: Der
+VDE-Zweig ist kein Sonderfall, sondern eine zweite vollständige Ausprägung
+desselben Gerüsts.
 
 ---
 
