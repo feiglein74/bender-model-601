@@ -379,7 +379,235 @@ Verschleißteil** und liefern **dauerhafte Ausdrucke.** Damit gilt gesichert:
 
 - [ ] Rollenbreite und Kerndurchmesser messen, für den Fall des Nachkaufs
 
-### Vermutung: Nadelwerk mit erschöpfter Endlos-Farbbandkassette
+### Das Druckwerk ist identifiziert (2026-08-15)
+
+| | |
+|---|---|
+| **Druckwerk** | **`DPN-240-24-S105`** — Datamega, Frontplatten-Einbaudrucker |
+| **Farbband** | **`DPN-290-SW`**, schwarz |
+| Bauart | **Nadeldrucker mit Farbband** — damit bestätigt |
+
+### Spaltenzahl: voraussichtlich 24
+
+Die DPN-240-Reihe gibt es in mehreren Breiten (`240-24`, `240-32`, `240-4`).
+Die **`24` in der Typnummer** ist damit sehr wahrscheinlich die
+**Spaltenzahl** — das Gerät druckt 24 Zeichen je Zeile.
+
+Eine am ausgebauten Werk geschätzte Breite von 20 Zeichen widersprach dem
+zunächst, wurde aber als bloße Schätzung zurückgenommen. Sie steht der
+Typnummer nicht entgegen.
+
+- [ ] **Bestätigen durch Auszählen:** In der längsten Zeile eines Ausdrucks
+      die Zeichen zählen. Der Selbsttest-Ausdruck genügt.
+
+Bei 24 Spalten hätte der **Ausdruck vier Zeichen mehr Platz als die Anzeige**
+(20 Zeichen). Beim Abschreiben von Protokollen hilft die Zahl, Spalten richtig
+zuzuordnen.
+
+### Farbband: lieferbar, und die Vermutung stimmte
+
+`DPN-290-SW` ist im Zubehörhandel weiterhin erhältlich und wird dort als
+**gleichwertig zu `ERC-21`** geführt — der Epson-Farbbandreihe für
+Registrierkassen und Einbaudrucker.
+
+Damit hat sich die Arbeitsvermutung von gestern bestätigt: Es ist eine
+**genormte Endloskassette aus der ERC-Familie**, kein Sonderteil. Ersatz
+kostet wenige Euro und ist unproblematisch zu bekommen.
+
+**Das entschärft den einzigen echten Verschleißpunkt der Ausgabe.** Ausdrucke
+bleiben trotzdem bewusst zu setzen — der Druckkopf ist damit nicht ersetzt —,
+aber die Sorge, das Gerät könne mangels Farbband verstummen, ist gegenstandslos.
+
+### Was noch fehlt: die Ansteuerung
+
+Ein **Datenblatt zum DPN-240 war am 2026-08-15 nicht auffindbar.** Die Reihe
+ist über Zubehörhändler belegt, technische Unterlagen sind es nicht.
+
+### Aufbau der Druckerbaugruppe (ausgebaut betrachtet, 2026-08-15)
+
+**Maße des Einschubs:** rund **10 × 8 × 6 cm.**
+
+| Ort | Was dort sitzt |
+|---|---|
+| **Front** | Rändelschrauben, **ein Knopf**, Papierauslass |
+| **Rückseite** | 13-poliger Stecker, greift in die Gegenbuchse im Gerät |
+| **über dem Stecker** | die **Papierrolle** — sie nimmt 5 der 8 cm ein |
+| **vorne oben** | das eigentliche Druckwerk |
+
+**Das Druckwerk selbst** ist nur **1,5 cm tief** und mit Farbband **4 cm hoch**.
+Seine Breite entspricht der Druckbreite zuzüglich Überstand für **Motor** und
+**Farbbandmechanik**. Die Farbbandkassette misst etwa **9 cm** in der Breite.
+
+**Verdrahtung:** Ein **Flachbandkabel** führt die 13 Leitungen von der
+rückseitigen Buchse nach vorn zum Druckwerk. Dort sitzt oben eine **Platine
+mit 13 Anschlüssen** für das Flachband und **zwei weiteren zum Motor**, der
+unmittelbar darunter liegt.
+
+Auffällig: **Die Papierrolle beansprucht mehr Bauraum als das Druckwerk.**
+Das Werk ist ein flacher Streifen, alles andere ist Vorrat und Mechanik.
+
+- [ ] Wozu dient der **Knopf** an der Front? Naheliegend
+      **Papiervorschub**. Falls ja: Wirkt er unmittelbar auf den Motor, oder
+      läuft er über die 13 Pole zur Hauptplatine und wird von der Firmware
+      ausgewertet? Ersteres wäre eine reine Mechanik-Funktion, letzteres
+      hieße, dass eine der 13 Leitungen ein **Eingang** ist.
+- [ ] Rollenbreite und Kerndurchmesser messen (Nachkauf)
+
+### Aus dem Video vom 2026-08-15
+
+Aufnahme des laufenden Druckwerks bei entnommener Farbbandkassette, Blick von
+vorn in den Schacht. Erkennbar:
+
+- **Flexleiter zum Druckkopf** — orangefarbenes Folienkabel mit etwa
+  **sechs bis sieben Leiterbahnen**, geschwungen verlegt, damit der Kopf sich
+  bewegen kann. Es ist die einzige Verbindung zum Kopf.
+- **Druckwalze** — weiße Rolle über die volle Druckbreite, dahinter der
+  Papierlauf.
+- **Motor mit Zahnradsatz** am rechten Rand des Werks.
+- **Grüner Knopf** in der Frontplatte des Druckers, rechts neben dem Schacht,
+  zwischen den beiden Rändelschrauben.
+- Ein **Aufkleber** an der linken Seite des Werks, im Bild nur teilweise
+  lesbar (`…AGY…`, `101`). Aus der Nähe fotografiert wäre er womöglich die
+  gesuchte Typangabe des Werks.
+
+**Die Zahl der Leiterbahnen im Flexkabel grenzt den Druckkopf ein.** Sechs bis
+sieben Bahnen sprechen für einen Kopf mit **wenigen Nadeln plus gemeinsamer
+Rückführung** — passend zu einem Zeichenraster, das spaltenweise aufgebaut
+wird, statt für alle Punkte einer Zeile eigene Magnete zu haben.
+
+- [ ] Leiterbahnen im Standbild genau auszählen oder am ausgebauten Werk
+      nachsehen. Zusammen mit den 13 Polen ergibt das die vollständige
+      Aufteilung: Kopf, Motor, Geber, Knopf.
+- [ ] Den Aufkleber am Werk scharf fotografieren
+
+### Reparatur: Farbband-Transportwalze zerbröselt (2026-08-15)
+
+**Befund:** Die **Transportwalze für das Farbband war vollständig
+zerbröselt** — der Gummi bzw. Kunststoff hatte sich nach rund drei Jahrzehnten
+zersetzt. Die Walze wurde **instandgesetzt.**
+
+Das erklärt rückwirkend das blasse Schriftbild: Ein Farbband, das nicht
+weitertransportiert wird, wird an einer Stelle ausgeschrieben, während der
+Rest der Kassette voll bleibt. Die Vermutung „ausgelutschtes Farbband" traf
+also nur die Wirkung, nicht die Ursache.
+
+⚠️ **Zerfallender Gummi tritt selten allein auf.** Weichmacher wandern in
+allen Bauteilen desselben Alters gleichmäßig aus. Was hier zerbröselte, steht
+den übrigen Rollen möglicherweise noch bevor:
+
+- [ ] **Druckwalze** prüfen — hart, klebrig, rissig, oder noch elastisch?
+- [ ] **Papiertransportrolle** prüfen
+- [ ] Alle weiteren Gummiteile im Werk sichten
+- [ ] Zustand nach der Reparatur fotografieren → `../bilder/`
+**Ausführung der Reparatur:** Die Walze wurde mit **dünnem doppelseitigem
+Klebeband neu aufgewickelt**, bis der ursprüngliche Durchmesser wieder erreicht
+war; die **äußerste Klebefläche wurde anschließend neutralisiert**, damit sie
+nicht am Farbband haftet.
+
+Das stellt beides wieder her, worauf es bei einer Transportwalze ankommt:
+**Durchmesser** — und damit die Übersetzung des Vorschubs — und
+**Griffigkeit**. Ein starrer Ersatz aus Kunststoff hätte Letzteres nicht
+geleistet.
+
+- [ ] **Womit wurde die äußere Fläche neutralisiert?** Für die
+      Nachvollziehbarkeit wichtig, weil davon die Haltbarkeit abhängt.
+      Talkum und Graphit setzen sich mit der Zeit, ein aufgeklebter
+      Papierstreifen hält länger.
+
+**Was im Auge zu behalten ist**, ohne dass es die Reparatur schmälert:
+
+- **Klebstoff kriecht.** Acrylat- und Kautschukkleber werden bei Wärme weich;
+  im Betrieb wird das Werk handwarm. Über Monate kann der Wickel wandern oder
+  seitlich austreten.
+- **Rückstände am Farbband** wären der erste sichtbare Hinweis — dann setzt
+  sich Kleber im Gewebe fest.
+- [ ] Nach einigen Ausdrucken den Wickel und das Band ansehen
+
+**Falls es dauerhaft werden soll**, sind die üblichen Wege: ein passender
+**O-Ring**, ein Stück **Silikonschlauch** über den Kern gezogen, oder
+**Schrumpfschlauch** — Letzterer ist griffig genug und altert kaum. Alle drei
+lassen sich später ohne Spuren gegen den Klebebandwickel tauschen.
+
+### Gegenprobe bestanden (2026-08-15)
+
+Nach der Reparatur ist das **Schriftbild wieder kräftig.**
+
+Damit ist zweierlei belegt:
+
+- **Der Farbbandtransport war die Ursache** des blassen Drucks, nicht ein
+  erschöpftes Band und nicht ein müder Druckkopf.
+- **Der Druckkopf ist in Ordnung.** Keine Nadel fehlt, keine Punktzeile bleibt
+  aus — sonst wäre das gerade jetzt sichtbar, wo der Kontrast wieder stimmt.
+
+**Das Gerät ist damit in allen bisher geprüften Funktionen vollständig
+betriebsbereit** — einschließlich der Protokollausgabe. Der einzige verbliebene
+Mangel ist die fehlende Uhrenpufferung (`BATTERIE.md`), und die ist bewusst
+zurückgestellt.
+
+Nachträglich fällt damit auch die Sparsamkeitsregel milder aus: Das Farbband
+ist lieferbar (`ERC-21`-Familie) und der Transport wieder in Ordnung. Ausdrucke
+bleiben eine bewusste Entscheidung, aber kein knappes Gut mehr.
+
+- [ ] **Spalten auszählen** — die längste Zeile des frischen Ausdrucks
+      entscheidet die offene Frage 20 gegen 24
+- [ ] **Wortlaut des Selbsttest-Ausdrucks vollständig notieren.** Jetzt, mit
+      kräftigem Schriftbild, ist er erstmals sauber lesbar — und er ist die
+      Vorlage für alles, was später über die RS-232 ankommt
+- [ ] Ausdruck fotografieren → `../bilder/`
+
+### Befund: Es ist ein nacktes Druckwerk, kein Modul mit Steuerung
+
+**Auf der Platine sitzen keine Bauteile** — jedenfalls nicht auf der
+einsehbaren Seite. Sie verteilt nur: 13 Leitungen herein, zwei davon zum
+Motor, der Rest zum Druckkopf.
+
+Bliebe die Möglichkeit, dass Elektronik am **Druckkopf** selbst sitzt. Dagegen
+spricht die Beobachtung: **Der Kopf muss sich bewegen**, und dafür ist bei
+1,5 cm Bautiefe kaum Platz für mehr als die Magnetspulen und ihre Zuleitung.
+
+Damit ist die vorherige Annahme **widerlegt**: Das Druckwerk nimmt **keine
+fertigen Zeichen** entgegen. Die **Hauptplatine des µP601 steuert den
+Druckkopf unmittelbar an.**
+
+Die Polzahl passt dazu. 13 Leitungen reichen genau für ein nacktes Werk:
+
+| Funktion | Leitungen, typisch |
+|---|---|
+| Nadelmagnete des Druckkopfs | 7 |
+| gemeinsame Rückführung / Versorgung | 1–2 |
+| Motor | 2 |
+| Zeilen-/Positionsgeber, Papierende | 2–3 |
+
+Zur Einordnung des Größenarguments: Mitte der neunziger Jahre hätte eine
+Drucksteuerung durchaus in **einen** Baustein gepasst, Baugröße allein wäre
+also kein Beweis. **Entscheidend ist, dass gar kein Baustein da ist.**
+
+### Folgen
+
+**Für das Vorhaben „Ausdruck elektronisch aufnehmen" (`STAND.md`):** Am
+Druckerstecker liegen **Ansteuermuster für Nadelmagnete**, kein Zeichenstrom.
+Wer dort abgreift, bekäme Punktbilder und müsste daraus erst wieder Text
+gewinnen — machbar, aber eine andere Größenordnung.
+
+**Damit ist die RS-232 auf der Rückwand nicht mehr die bequemere, sondern die
+einzig sinnvolle Quelle.** Der zuvor erwogene zweite, unabhängige Weg über den
+Druckerstecker entfällt.
+
+**Für das Verständnis des Geräts:** Der **Zeichensatz des Ausdrucks liegt in
+der Firmware des µP601**, nicht im Druckwerk. Das Gerät erzeugt die Punktmuster
+selbst — und auf der Hauptplatine müssen **Magnettreiber und eine
+Motorsteuerung** sitzen. Beides ist beim späteren Öffnen zu erwarten und ein
+guter Anhaltspunkt zum Auffinden der Druckerbaugruppe.
+
+- [ ] Beim Öffnen: Treiberbausteine für die Nadelmagnete suchen
+      (Darlington-Arrays wie `ULN200x` oder Einzeltransistoren)
+- [ ] Aufdrucke auf der kleinen Platine im Modul dennoch lesen — Typnummer,
+      Datumscode
+- [ ] Weitersuchen nach Unterlagen zum `DPN-240`: Datamega, POHL electronic
+      (Händler für Frontplatten-Einbaudrucker), Ersatzteilarchive
+- [ ] Suffix **`S105`** deuten — vermutlich Ausführungsvariante
+
+### Vermutung von 2026-08-14: Nadelwerk mit erschöpfter Endlos-Farbbandkassette
 
 Arbeitsvermutung (2026-08-14): ein **Nadeldruckwerk mit umlaufender
 Farbbandkassette**, deren Band **ausgeschrieben** ist. Dafür spricht ein

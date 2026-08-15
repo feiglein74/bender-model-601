@@ -27,3 +27,6 @@ desktop.ini
 .claude/
 __pycache__/
 *.pyc
+
+# Videos vom Geraet (nicht im Repo, zu gross)
+*.mp4
