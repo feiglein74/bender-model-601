@@ -484,15 +484,70 @@ heißt das: die Zeilennummer immer mitschreiben, nie aus der Position schließen
 
 ### Der Selbsttest druckt sein Ergebnis aus
 
-Am Ende gibt der eingebaute Drucker ein Protokoll aus:
+**Vollständiger Wortlaut**, abgelesen am Ausdruck vom 2026-08-15
+(`../bilder/selbsttest_ausdruck_20260815.jpg`), nach der Instandsetzung des
+Farbbandtransports erstmals sauber lesbar. Zeilenbreite 24 Zeichen:
 
-| Feld | Bedeutung |
-|---|---|
-| `Selbsttest bestanden` | Ergebnis |
-| **Zeit** | aus der geräteinternen Uhr |
-| **Datum** | aus der geräteinternen Uhr |
-| **Nennspannung** | die Netzspannung, mit der das Gerät rechnet |
-| **Gerätenummer** | Kennung des Geräts — Zuordnung noch offen |
+```
+             IVM429 D
+MACK
+Medizin-Technik GmbH
+90482 Nürnberg
+- - - - - - - - - - - -
+Selbsttest bestanden
+- - - - - - - - - - - -
+Zeit   :    00:37:27
+Datum  :    02/10/3?
+Nennspannung:   230 V
+Ger.Nr.:      600521
+Prüfer:
+```
+
+Die genaue Einrückung ist aus dem Foto nur näherungsweise ablesbar; die
+Reihenfolge und der Wortlaut sind sicher.
+
+**Der Bleistiftstrich an der ersten Trennlinie stammt vom Auszählen der
+Zeichen** und gehört nicht zum Ausdruck.
+
+### Was das Protokoll verrät
+
+**1. Der Kopf ist der Betreibertext.** Dieselben drei Zeilen wie auf dem
+Startbildschirm, darüber `IVM429 D` — ebenfalls wie dort, rechts eingerückt.
+Anzeige und Ausdruck teilen sich denselben Kopf.
+
+**2. `Ger.Nr.: 600521` ist die Werk-Nummer des µP601 selbst** — identisch mit
+dem Typenschild (`FUNKTIONSAUFNAHME.md`, Abschnitt A).
+
+Damit ist die offene Frage von gestern beantwortet: Der Begriff
+**„Gerätenummer" meint hier den Prüfer, nicht den Prüfling.** In der
+Prüflingsdatenbank `[S13]` bezeichnet dieselbe Vokabel dagegen die Kennung
+eines Prüflings. Das Gerät verwendet den Begriff also **je nach Zusammenhang
+für zwei verschiedene Dinge** — beim Lesen von Protokollen darauf achten.
+
+**3. `Datum : 02/10/3?` — das `?` erscheint auch im Ausdruck.**
+Die Konvention „Fragezeichen für einen unbekannten Wert" gilt nicht nur auf der
+Anzeige, sondern **auch auf Papier**. Das Gerät druckt lieber ein
+Fragezeichen, als eine Jahreszahl zu erfinden.
+
+Der Stand ist wieder undefiniert, weil die Uhr ohne Pufferung bei jedem
+Einschalten neu beginnt (`BATTERIE.md`). `00:37:27` ist die Einschaltdauer.
+
+**4. Neu: das Feld `Prüfer:`** — es steht **leer** am Ende des Protokolls.
+
+Zwei Deutungen, beide plausibel:
+
+- Ein **Unterschriftsfeld zum handschriftlichen Eintragen.** Für ein
+  Prüfprotokoll, das jemand verantworten muss, die naheliegende Lösung.
+- Ein **speicherbares Textfeld**, das hier schlicht nicht gefüllt ist.
+
+- [ ] Gibt es im Menü einen Punkt, unter dem sich ein Prüfername eintragen
+      lässt? Zu suchen im `F`-Zweig, wo auch Betreibertext und Uhr liegen.
+      Findet sich einer, ist es ein Datenfeld — sonst eine Schreiblinie.
+
+**5. Der Aufbau ist zweigeteilt** — Kopf mit Betreiber und Gerät, dann durch
+gestrichelte Linien abgesetzt das Ergebnis, dann die Einzelangaben. Für
+Prüfprotokolle von Prüflingen ist dieselbe Gliederung zu erwarten, mit den
+Messwerten anstelle der Selbsttestmeldung.
 
 Damit ist zugleich belegt: **der Drucker funktioniert und Papier ist vorhanden.**
 

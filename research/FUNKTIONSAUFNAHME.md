@@ -387,22 +387,28 @@ Verschleißteil** und liefern **dauerhafte Ausdrucke.** Damit gilt gesichert:
 | **Farbband** | **`DPN-290-SW`**, schwarz |
 | Bauart | **Nadeldrucker mit Farbband** — damit bestätigt |
 
-### Spaltenzahl: voraussichtlich 24
+### Spaltenzahl: 24, bestätigt (2026-08-15)
 
 Die DPN-240-Reihe gibt es in mehreren Breiten (`240-24`, `240-32`, `240-4`).
-Die **`24` in der Typnummer** ist damit sehr wahrscheinlich die
-**Spaltenzahl** — das Gerät druckt 24 Zeichen je Zeile.
+Die **`24` in der Typnummer ist die Spaltenzahl.**
 
-Eine am ausgebauten Werk geschätzte Breite von 20 Zeichen widersprach dem
-zunächst, wurde aber als bloße Schätzung zurückgenommen. Sie steht der
-Typnummer nicht entgegen.
+**Belegt am Ausdruck:** Das Gerät druckt zwischen den Abschnitten eine
+**gestrichelte Trennlinie über die volle Zeilenbreite** — abwechselnd ein
+Strich und ein Leerzeichen, **zwölfmal wiederholt**:
 
-- [ ] **Bestätigen durch Auszählen:** In der längsten Zeile eines Ausdrucks
-      die Zeichen zählen. Der Selbsttest-Ausdruck genügt.
+```
+_ _ _ _ _ _ _ _ _ _ _ _
+```
 
-Bei 24 Spalten hätte der **Ausdruck vier Zeichen mehr Platz als die Anzeige**
-(20 Zeichen). Beim Abschreiben von Protokollen hilft die Zahl, Spalten richtig
-zuzuordnen.
+Jeder Strich sitzt in einer Zeichenzelle und ist genau so breit wie ein
+Zeichen der Zeilen darüber und darunter. `12 × 2 = 24 Spalten.`
+
+Die Zeichenzellen als Maßstab zu nehmen, ist dabei die verlässlichste Methode:
+Ein Nadeldrucker setzt jedes Zeichen in ein festes Raster, und eine Folge
+gleicher Zeichen in diesem Raster ist ein exaktes Lineal.
+
+Eine zwischenzeitliche Schätzung von 20 Zeichen am ausgebauten Werk ist damit
+erledigt. **Der Ausdruck hat vier Spalten mehr als die Anzeige** (20 Zeichen).
 
 ### Farbband: lieferbar, und die Vermutung stimmte
 
@@ -446,11 +452,21 @@ unmittelbar darunter liegt.
 Auffällig: **Die Papierrolle beansprucht mehr Bauraum als das Druckwerk.**
 Das Werk ist ein flacher Streifen, alles andere ist Vorrat und Mechanik.
 
-- [ ] Wozu dient der **Knopf** an der Front? Naheliegend
-      **Papiervorschub**. Falls ja: Wirkt er unmittelbar auf den Motor, oder
-      läuft er über die 13 Pole zur Hauptplatine und wird von der Firmware
-      ausgewertet? Ersteres wäre eine reine Mechanik-Funktion, letzteres
-      hieße, dass eine der 13 Leitungen ein **Eingang** ist.
+**Der grüne Knopf ist der Papiervorschub** (belegt 2026-08-15).
+
+Offen bleibt, **wie** er wirkt — und daran hängt die Aufteilung der 13 Pole:
+
+| Verdrahtung | Folge |
+|---|---|
+| Knopf schaltet den **Motor unmittelbar** | reine Mechanikfunktion, alle 13 Leitungen sind Ausgänge der Hauptplatine |
+| Knopf führt **über die 13 Pole** zur Hauptplatine | eine Leitung ist ein **Eingang**; die Firmware wertet ihn aus und steuert den Vorschub |
+
+- [ ] **Am ausgebauten Modul verfolgen, wohin die Adern des Knopfes führen** —
+      zur Verteilerplatine und weiter ins Flachband, oder direkt zum Motor.
+      Das ist mit bloßem Auge zu sehen und beantwortet die Frage endgültig.
+- [ ] Hilfsweise am eingebauten Gerät: Arbeitet der Vorschub **während eines
+      laufenden Ausdrucks**? Wird er dann unterdrückt, wertet ihn die
+      Firmware aus.
 - [ ] Rollenbreite und Kerndurchmesser messen (Nachkauf)
 
 ### Aus dem Video vom 2026-08-15
