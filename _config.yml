@@ -1,0 +1,9 @@
+title: Bender µP601 — documenting a working medical safety tester
+description: >-
+  Field notes on the Bender µP601 / µP 601-1 (B928161) medical electrical
+  safety tester (IEC 601-1, DIN VDE 0751): menu tree, built-in DPN-240
+  dot-matrix printer, RS-232, no manual available.
+theme: jekyll-theme-minimal
+lang: en
+exclude:
+  - CLAUDE.md
